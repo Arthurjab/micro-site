@@ -1,0 +1,6 @@
+div(ng-show="AILoading").screen-box.bg-dark.loader
+	.center
+		.center-box
+			img(src="assets/ring.svg" style="margin: 0 auto; display:block;")
+div(ng-hide="AILoading").loaded
+	div(ng-view="")

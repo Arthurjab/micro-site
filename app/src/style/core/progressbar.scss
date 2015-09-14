@@ -1,0 +1,50 @@
+
+/* Progress-bar
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.progress-bar-container {
+  width: 100%;
+  height: 10px;
+  position:absolute;
+  top:0;
+  left:0;
+  //background-color: $color-grey-10;
+  @include border-radius(5px);
+
+    h4 {
+      color:$color-grey-40;
+      position:absolute;
+      left:0;
+      right:0;
+      margin: 0 auto;
+    }
+
+  .progress-bar {
+    //background-image: linear-gradient(135deg, darken($color-complement, 5%) 25%, transparent 25%, transparent 50%, darken($color-complement, 5%) 50%, darken($color-complement, 5%) 75%, transparent 75%, transparent);
+    background-color: $color-complement;
+    position:relative;
+    background-size: 30px 30px;
+    height: 10px;
+    background-position: 0 60px;
+    min-width: 0px;
+    float:left;
+    @include transition(all, 1200ms, ease-in-out);
+    -moz-border-radius-topleft:3px;
+    -webkit-border-top-left-radius:3px;
+    border-top-left-radius:3px;
+    -moz-border-radius-bottomleft:3px;
+    -webkit-border-bottom-left-radius:3px;
+    border-bottom-left-radius:3px;    
+
+
+    /* Specific colors
+    –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+    &.danger {
+      //background-image: linear-gradient(135deg, darken($color-danger, 5%) 25%, transparent 25%, transparent 50%, darken($color-danger, 5%) 50%, darken($color-danger, 5%) 75%, transparent 75%, transparent);
+      background-color: $color-danger;
+    }
+
+  }
+}
+

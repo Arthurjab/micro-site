@@ -1,0 +1,105 @@
+ /* color.less
+============================================= */
+
+	/* # Colors
+	============================================= */
+
+		/* ## Base
+		============================================= */
+
+			$color-primary:				#ff8900;
+			$color-primary-light:		lighten($color-primary, 15%);
+			$color-primary-dark:		darken($color-primary, 15%);
+
+			$color-dark:				#101118;
+			$color-dark-light:			lighten($color-dark, 15%);
+			$color-dark-dark:			darken($color-dark, 15%);
+
+			$color-light:				lighten($color-dark, 20%); //20a0ff
+			$color-light-light:			lighten($color-light, 15%);
+			$color-light-dark:			darken($color-light, 15%);
+
+			$color-complement:			#FFB047;
+			$color-complement-light:	lighten($color-complement, 15%);
+			$color-complement-dark:		darken($color-complement, 15%);
+
+		/* ## 10 shades of grey
+		============================================= */
+
+			$color-grey-0:				rgba(255, 255, 255, 1);
+			$color-grey-10:				darken($color-grey-0, 5%);
+			$color-grey-20:				darken($color-grey-10, 10%);
+			$color-grey-30:				darken($color-grey-20, 10%);
+			$color-grey-40:				darken($color-grey-30, 10%);
+			$color-grey-50:				darken($color-grey-40, 10%);
+			$color-grey-60:				darken($color-grey-50, 10%);
+			$color-grey-70:				darken($color-grey-60, 10%);
+			$color-grey-80:				darken($color-grey-70, 10%);
+			$color-grey-90:				darken($color-grey-80, 10%);
+			$color-grey-100:			rgba(0, 0, 0, 1);
+
+		/* ## Symbolic
+		============================================= */
+
+			$color-success:				#149A57;
+			$color-success-dark:		darken(#149A57, 15%);
+			$color-success-light:		lighten(#149A57, 15%);
+			$color-info:				SteelBlue;
+			$color-warning:				orange;
+			$color-danger:				#D23D29;
+			$color-danger-dark:			darken(#D23D29, 15%);
+			$color-danger-light:		lighten(#D23D29, 15%);
+			$color-link:				#303E73;
+
+
+	/* # Classes
+	============================================= */
+
+		/* ## Background-color
+		============================================= */
+
+			.bg-primary        			{ background-color: $color-primary!important; }
+			.bg-primary-light   		{ background-color: $color-primary-light!important; }
+			.bg-primary-dark   			{ background-color: $color-primary-dark!important; }
+
+			.bg-dark   					{ background-color: $color-dark!important; }
+			.bg-dark-light   			{ background-color: $color-dark-light!important; }
+			.bg-dark-dark  				{ background-color: $color-dark-dark!important; }
+			.bg-grey-10					{ background-color: $color-grey-10!important; }
+			.bg-grey-20					{ background-color: $color-grey-20!important; }
+
+			.bg-complement     			{ background-color: $color-complement!important; }
+			.bg-complement-light		{ background-color: $color-complement-light!important; }
+			.bg-complement-dark   		{ background-color: $color-complement-dark!important; }
+
+			.bg-info           			{ background-color: $color-info!important; }
+			.bg-warning         		{ background-color: $color-warning!important; }
+			.bg-danger        	 		{ background-color: $color-danger!important; }
+			.bg-success       			{ background-color: $color-success!important; }
+
+			.bg-white         	    	{ background-color: white!important; }
+			.bg-black      	      		{ background-color: black!important; }
+
+		/* ## Texts-color
+		============================================= */
+
+			.text-primary        	  	{ color:			$color-primary!important; }
+			.text-primary-light   	    { color:			$color-primary-light!important; }
+			.text-primary-dark    	   	{ color:			$color-primary-dark!important; }
+	
+			.text-grey-10				{ color: 			$color-grey-10!important; }
+			.text-grey-20				{ color: 			$color-grey-20!important; }
+			.text-grey-50				{ color:			$color-grey-50!important; }
+
+			.text-complement       	  	{ color:			$color-complement!important; }
+			.text-complement-light 	  	{ color: 			$color-complement-light!important; }
+			.text-complement-dark  	  	{ color: 			$color-complement-dark!important; }
+
+			.text-info               	{ color: 			$color-info!important; }
+			.text-warning        	    { color: 			$color-warning!important; }
+			.text-danger         	    { color: 			$color-danger!important; }
+			.text-success      	      	{ color: 			$color-success!important; }
+
+			.text-white         	    { color: 			white!important; }
+			.text-black      	      	{ color: 			black!important; }
+

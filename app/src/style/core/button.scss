@@ -1,0 +1,291 @@
+
+  .button-group {
+    &.centered {
+      display:inline-block;
+      text-align: center;
+      width:100%;
+    }
+  }
+
+/* Buttons
+
+    Markup : *.button
+                i.icon.icon-whatever
+                span text
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+    .button {
+        
+        display: inline-block;
+        margin-left:5px;
+        margin-right:5px;
+        padding:10px 20px;
+        
+        text-decoration: none;
+        cursor:pointer;
+        color:white;
+        font-weight: bold;
+        background-color:$color-primary;
+        border:1px outset rgba(0,0,0,0.1);
+        text-shadow: 0px -1px 0px rgba(0,0,0,0.1);
+        
+        @include border-radius();
+        @include transition(all, 200ms, ease-in-out);
+        @include unselectable();
+
+        i + span {
+            display:inline-block;
+            margin-left:10px;
+        }
+
+        i {
+          margin-top: -2px;
+        }
+
+        &:hover {
+          background-color:lighten($color-primary, 8%);
+        }
+
+        &:active {
+          background-color:darken($color-primary, 5%);
+        }
+
+        /* Specific buttons
+        –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+            &.small {
+              padding:5px 10px;
+            }
+
+            &.big {
+              padding:10px 20px;
+              margin:15px 15px 15px 15px;
+              width:calc(100% - 30px);
+            }
+
+            &.validate {
+              float:right;
+              margin-right:35px;
+            }
+
+            &.centered {
+              display:block;
+              margin: 0 auto !important;
+            }
+
+            &.dark {
+              background-color:lighten($color-dark, 10%);
+              cursor:pointer;
+              &:hover {
+                background-color: lighten($color-dark, 20%);
+              }
+              &:active {
+                background-color: darken($color-dark, 10%);
+              }
+            }            
+
+            &.off {
+              background-color: lighten($color-dark, 50%);
+              cursor:initial;
+              &:hover {
+                background-color: lighten($color-dark, 50%);
+              }
+              &:active {
+                background-color: lighten($color-dark, 50%);
+              }
+            }
+
+            &.light {
+              background-color:lighten($color-light, 10%);
+              cursor:pointer;
+              &:hover {
+                background-color: lighten($color-light, 20%);
+              }
+              &:active {
+                background-color: darken($color-light, 10%);
+              }
+            } 
+
+            &.grey {
+              background-color:$color-grey-30;
+              cursor:pointer;
+              &:hover {
+                background-color: lighten($color-grey-30, 5%);
+              }
+              &:active {
+                background-color: darken($color-grey-30, 5%);
+              }
+            }
+
+            &.primary {
+              background-color:$color-primary;
+              cursor:pointer;
+              &:hover {
+                background-color: lighten($color-primary, 5%);
+              }
+              &:active {
+                background-color: darken($color-primary, 5%);
+              }
+            }
+
+            &.complement {
+              background-color:$color-complement;
+              cursor:pointer;
+              &:hover {
+                background-color: lighten($color-complement, 5%);
+              }
+              &:active {
+                background-color: darken($color-complement, 5%);
+              }
+            }
+
+            &.super-complement {
+              background-color:$color-complement !important;
+              cursor:pointer!important;
+              &:hover {
+                background-color: lighten($color-complement, 5%) !important;
+              }
+              &:active {
+                background-color: darken($color-complement, 5%) !important;
+              }
+            }
+
+
+            &.complement-dark {
+              background-color:$color-complement-dark;
+              cursor:pointer;
+              &:hover {
+                background-color: lighten($color-complement-dark, 5%);
+              }
+              &:active {
+                background-color: darken($color-complement-dark, 5%);
+              }
+            }
+
+            &.danger {
+              background-color:$color-danger;
+              cursor:pointer;
+              &:hover {
+                background-color: lighten($color-danger, 5%);
+              }
+              &:active {
+                background-color: darken($color-danger, 5%);
+              }
+            }
+
+            &.success {
+              background-color:$color-success;
+              cursor:pointer;
+              &:hover {
+                background-color: lighten($color-success, 5%);
+              }
+              &:active {
+                background-color: darken($color-success, 5%);
+              }
+            }
+
+            &.disabled {
+              background-color:$color-grey-20;
+              cursor:initial;
+              &:hover {
+                background-color: lighten($color-grey-20, 5%);
+              }
+            }
+
+
+            /* Spinner Buttons
+
+                Markup : *.button
+                            p Text
+                            .spinner
+            –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+            &.spinner {
+              position:relative;
+              width: 165px;
+              height:44px;
+              .spin {
+                position:absolute;
+                background-image:url('../assets/loading.svg');
+                width: 32px;
+                height: 32px;
+                top:9px;
+                right:5px;
+                opacity:0;
+                @include transition(all, 200ms, ease-in-out);
+              }
+
+              span {
+                font-weight:bold;
+                margin-left:0;
+                color:white;
+                @include transition(margin-left, 200ms, ease-in-out);
+                text-shadow: -0.7px -0.7px 1px rgba(0,0,0,0.2);                
+              }
+              
+              &.on {
+                span {
+                  margin-left:-30px;
+                }
+                .spinner {
+                  opacity:1!important;
+                }
+              }
+            
+            }
+
+
+            &.mini-spinner {
+              position:relative;
+              .spin {
+                position:absolute;
+                background-image:url('../../assets/svg/loading.svg');
+                width: 32px;
+                height: 32px;
+                top:6px;
+                right:-3px;
+                opacity:0;
+                @include transition(all, 200ms, ease-in-out);
+              }
+              &.on {
+                span {
+                  margin-left:-30px;
+                }
+                .spinner {
+                  opacity:1!important;
+                }
+              }
+
+            }
+
+
+
+
+    }
+
+
+  .form.ng-pristine:not(.ng-valid) .button[type="submit"], .form.ng-invalid .button[type="submit"] {
+    background-color:$color-grey-20;
+    cursor:initial;
+    &:hover {
+      background-color: lighten($color-grey-20, 5%);
+    }
+  }
+
+
+
+
+/* Sass bug forces me to force this ^
+------------------------------------|--------------------------*/
+
+.button.mini-spinner.on i {
+  opacity: 0;
+}
+.button.mini-spinner.on .spin {
+  opacity: 1;
+}
+
+
+.button.spinner.on .spin {
+  opacity: 1;
+}
