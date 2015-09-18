@@ -1,0 +1,19 @@
+{
+  "name": "observatory-website",
+  "version": "0.0.1",
+  "homepage": "https://github.com/THook/derock",
+  "description": "Etienne de Rocquigny's website",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "classie": "~1.0.1",
+    "ui-router": "~0.2.15",
+    "angular": "~1.4.6"
+  }
+}

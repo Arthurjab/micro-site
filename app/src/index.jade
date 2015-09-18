@@ -29,22 +29,11 @@ html
 		meta(name='robots', content='index, follow')
 		meta(http-equiv='cache-control', content='public')
 
-		// Facebook meta
-		meta(property='og:title', content='Etienne de Rocquigny')
-		meta(property='og:type', content='Website')
-
-		// url finale
-		meta(property='og:url', content='http://.fr')
-		meta(property='og:image', content='http://.fr/assets/logo.png')
-		meta(property='og:site_name', content='Observatoire')
-
 		link(href="http://fonts.googleapis.com/css?family=Open+Sans:400,800,400italic,700italic,300|PT+Serif:400,800italic,700italic|PT+Serif+Caption" rel="stylesheet" type="text/css")
-
-		<!-- inject:css -->
-		<!-- endinject -->
+		link(type="text/css", rel="stylesheet", href="styles/style.css")
 
 	body(ng-app="app")
 		div(ui-view="")
-		
-		<!-- inject:js -->
-		<!-- endinject -->
+
+		script(type="text/javascript" src="vendor/vendor.min.js")
+		script(type="text/javascript" src="scripts/app.js")
