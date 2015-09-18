@@ -27,7 +27,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             controller: 'whoamiCtrl'
         })
         .state('form', {
-            url: '/form',
+            url: '/form/:id',
             templateUrl: 'templates/form.html',
             controller: 'formCtrl'
         })
@@ -73,7 +73,8 @@ app.controller('homeCtrl', function ($scope) {
     });
 
 
-app.controller('formCtrl', function ($scope, $timeout) {
+app.controller('formCtrl', function ($scope, $timeout, $stateParams) {
+    console.log($stateParams);
 
     // le subitem est là pour aménager un peu la réponse 
     $scope.values = [{

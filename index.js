@@ -10,16 +10,15 @@ app.use(express.static(__dirname + '/app/dist'));
 app.use(express.static(__dirname + '/app/dist/assets'));
 app.use(express.static(__dirname + '/app/dist/style'));
 
-app.get('/WhatAboutTrackingMyself/go', function(req,res){
-	var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcm9tIjoiQlBJIiwic3Vic2NyaWJlc1RvTWFpbGluZ0xpc3QiOmZhbHNlLCJlbWFpbCI6Imh2aWxsYWluQHN0dWRlbnQuNDIuZnIiLCJjb21wYW55IjoicXdlcXdlIiwiZm5hbWUiOiJUcmFja2luZyIsImxuYW1lIjoiVGVzdCIsInNlY3RvciI6IkluZHVzdHJpZSJ9.V-5QnYa8qzN8TIoVgsUyZgsMAZ7UIrbPx9RMA5-xFL8";
+app.get('/getMyFormBack/:token', function(req,res){
+	var token = req.params.token;
 	var secret = 'ThisIsTheSecretIDontWantUTOKNOW';
 	var decoded = jwt.decode(token, secret);
 	console.log(decoded);
-	return res.send(200);
-	// http.get('http://derock.herokuapp.com/trackDiagnostic/' + token, function(res){
-	// 	console.log(res.statusCode);
-	// 	return res.send(200);
-	// })
+	http.get('http://derock.herokuapp.com/diagIsDone/' + token, function(resp){
+		console.log(resp);
+		return res.send(200, decoded);
+	});
 });
 
 app.get('/*', function(request, response) {
