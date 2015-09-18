@@ -2,7 +2,7 @@ var app = angular.module('app', ['ui.router', 'duScroll', 'duParallax']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
     
-    $urlRouterProvider.otherwise('/');
+    //$urlRouterProvider.otherwise('/');
     
     $stateProvider
 
