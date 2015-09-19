@@ -22,6 +22,7 @@ app.get('/getMyFormBack/:token', function(req,res){
 });
 
 app.post('/postDiagnostic', function(req,res){
+	console.log(res);
 	var async = false;
 	var ip_pool = "Main Pool";
 	var send_at = "example send_at";

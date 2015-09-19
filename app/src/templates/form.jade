@@ -153,10 +153,11 @@
 					label(for="radio-7-2-4")
 						| Je ne crois pas à la transition digitale pour mon entreprise/secteur d'activité.
 
-		form.box(name="step8" ng-if="step === 8" novalidate).form
+		form.box(name="step8" autocomplete="false" ng-if="step === 8" novalidate).form
 			h2.text-center Merci !
 			h4.text-center {{ data.sector.name }} comme beaucoup, est un domaine très sensible à la disruption.
-			p(ng-if="data.time >= 2") En particulier pour les entreprises de {{ data.time }} ans d'existence pour lesquelles la transition digitale est souvent plus difficile à amorcer. Malgré la difficulté, la pérennité d’une entreprise dépend souvent de sa capacité à réformer ses pratiques.
+			p(ng-if="data.time == 2") En particulier pour les entreprises entre trois et cinq ans d'existence pour lesquelles la transition digitale est souvent plus difficile à amorcer. Malgré la difficulté, la pérennité d’une entreprise dépend souvent de sa capacité à réformer ses pratiques.
+			p(ng-if="data.time == 3") En particulier pour les entreprises de plus de cinq années d'existence pour lesquelles la transition digitale est souvent plus difficile à amorcer. Malgré la difficulté, la pérennité d’une entreprise dépend souvent de sa capacité à réformer ses pratiques.
 			p(ng-if="data.time == 1")
 				| Heureusement, les plus jeunes entreprises sont souvent les plus promptes à réévaluer leur activité. Cela constitue un avantage certain à l’heure du digitale, où la croissance d’une entreprise dépend souvent de sa capacité à réformer ses pratiques.
 				| Longtemps réservés aux grosses structures, la recherche et le développement (R&D) jouent aujourd’hui un rôle central dans la stratégie des entreprises qui font parler d’elles.
@@ -166,5 +167,12 @@
 				| Porter un projet de disruption, même s’il est imparfait ou provisoire, constitue la possibilité d’un avantage concurrentiel indéniable, de par la rareté provisoire de ce type de conduite chez les dirigeants.
 			p(ng-if="!data.isdigital")
 				| Ne pas avoir de projet de disruption pour son entreprise n’est pas irrémédiable. Pourtant, les entreprises qui prennent le pas de la transition digitale bénéficient d’un avantage concurrentiel indéniable, de par la rareté (provisoire) de ce type de conduite chez les dirigeant.
-			button.add-top.button.centered.dark(ui-sref="nav.home", ng-class="{off: step7.$invalid}")
+			h4.text-center Laissez nous vos coordonées
+			input.big.add-bottom(placeholder="Votre email", type="email" ng-model="data.email", autocomplete="false", required)
+			input.big.add-bottom(placeholder="Nom de votre entreprise", type="text", ng-model="data.company", autocomplete="false", required)
+			input.big.add-bottom(placeholder="Nom", type="text", ng-model="data.fname", autocomplete="false", required)
+			input.big.add-bottom(placeholder="Prenom", type="text", ng-model="data.lname", autocomplete="false", required)
+			input.big.add-bottom(placeholder="Téléphone", type="tel", ng-model="data.phone", autocomplete="false", required)
+
+			button.add-top.button.centered.dark(type="submit", ng-click="sendForm()", ng-class="{off: step7.$invalid}")
 				span Revenir au site

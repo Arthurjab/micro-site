@@ -51,68 +51,49 @@ app.controller('homeCtrl', function ($scope) {
         var contactButton = angular.element(document.getElementById('button-validate'));
         var formBox = angular.element(document.getElementById('form'));
 
-
-        $scope.sendContact = function(form, $http){
-
-            if ($scope.form.$valid)
-            {
-                contactButton.addClass('on');
-
-                $http.post('control/sendMail', $scope.data)
-                    .success(function(a,b){
-                        el.addClass('win');
-                        console.log(a,b);
-                    })
-                    .error(function(a,b){
-                        el.addClass('fail');
-                        console.log(a,b);
-                    });
-            }
-        };
-
     });
 
 
-app.controller('formCtrl', function ($scope, $timeout, $stateParams) {
-    console.log($stateParams);
+app.controller('formCtrl', function ($scope, $timeout, $stateParams, $http, $state) {
+
 
     // le subitem est là pour aménager un peu la réponse 
     $scope.values = [{
       id: 1,
       label: 'Agriculture',
-      subItem: { name: "L'agriculture" }
+      subItem: { name: "L'agriculture", response: "agriculture" }
     }, {
       id: 2,
       label: 'Services',
-      subItem: { name: 'Le service' }
+      subItem: { name: 'Le service', response: "service" }
     }, {
       id: 3,
       label: 'Industrie',
-      subItem: { name: "L'Industrie" }
+      subItem: { name: "L'Industrie", response: "industrie" }
     }, {
       id: 4,
       label: 'Bâtiment',
-      subItem: { name: 'Le bâtiment' }
+      subItem: { name: 'Le bâtiment', response: "bâtiment" }
     }, {
       id: 5,
       label: 'Média / Edition',
-      subItem: { name: "Les Média et l'edition" }
+      subItem: { name: "Les Média et l'edition", response: "edition" }
     }, {
       id: 6,
       label: 'Transport',
-      subItem: { name: 'Le transport' }
+      subItem: { name: 'Le transport', response: "transport" }
     }, {
       id: 7,
       label: 'Télécom',
-      subItem: { name: 'Les télécoms' }
+      subItem: { name: 'Les télécoms', response: "télécom" }
     }, {
       id: 8,
       label: 'Ecologie',
-      subItem: { name: "L'ecologie" }
+      subItem: { name: "L'ecologie", response: "ecologie" }
     }, {
       id: 9,
       label: 'E-commerce',
-      subItem: { name: "L'e-commerce" }
+      subItem: { name: "L'e-commerce", response: "e-commerce" }
     }];
 
     $scope.data = {
@@ -124,23 +105,38 @@ app.controller('formCtrl', function ($scope, $timeout, $stateParams) {
         need:"",
         worried:"",
         algo:"",
-        isproblem:""
+        isproblem:"",
+
+        email:"",
+        fname:"",
+        lname:"",
+        phone:"",
+        company:""
     };
 
-    $scope.sendForm = function(form, $http){
+    if ($stateParams.id)
+    {
+      $http.get('/getMyFormBack/' + $stateParams.id)
+      .then(function(response){
+        $scope.data.email = response.data.email;
+        $scope.data.fname = response.data.fname;
+        $scope.data.lname = response.data.lname;
+        $scope.data.company = response.data.company;
+      });
+    }
 
-        $scope.data.sector = $scope.data.sector.name;
-        console.log("c'est la fête !");
-        // $http.post('control/sendMail', $scope.data)
-        //     .success(function(a,b){
-        //         el.addClass('win');
-        //         console.log(a,b);
-        //     })
-        //     .error(function(a,b){
-        //         el.addClass('fail');
-        //         console.log(a,b);
-        //     });
 
+    $scope.sendForm = function(form){
+        var keepData = angular.copy($scope.data);
+        keepData.sector = angular.copy($scope.data.sector.response);
+        $http.post('/postDiagnostic', keepData)
+            .success(function(a,b){
+                $state.go('nav.home');
+                console.log(a,b);
+            })
+            .error(function(a,b){
+                console.log(a,b);
+            });
     };
 
 
@@ -181,7 +177,6 @@ app.controller('formCtrl', function ($scope, $timeout, $stateParams) {
   };
 
   $scope.next = function (form) {
-    console.log($scope.data);
     if (!form.$invalid) {
         $scope.step++;
         if ($scope.maxStep < $scope.step)
