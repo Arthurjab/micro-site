@@ -129,6 +129,7 @@ app.controller('formCtrl', function ($scope, $timeout, $stateParams, $http, $sta
     $scope.sendForm = function(form){
         var keepData = angular.copy($scope.data);
         keepData.sector = angular.copy($scope.data.sector.response);
+        console.log(keepData);
         $http.post('/postDiagnostic', keepData)
             .success(function(a,b){
                 $state.go('nav.home');
