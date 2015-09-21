@@ -1,9 +1,12 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var app = express();
 var http = require('http');
 var jwt = require('jwt-simple');
 
 app.set('port', (process.env.PORT || 5000));
+
+app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/app/dist'));
