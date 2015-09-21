@@ -1569,7 +1569,7 @@ h3 {
     -moz-animation: box-flyin 0.9s 1;
     -o-animation: box-flyin 0.9s 1;
     animation: box-flyin 0.9s 1; }
-  .box select, .box p, .box .fs-radio-custom, .box button {
+  .box select, .box p, .box .fs-radio-custom, .box button, .box input:not([type="radio"]) {
     -webkit-animation: box-flyin 0.5s 1;
     -moz-animation: box-flyin 0.5s 1;
     -o-animation: box-flyin 0.5s 1;
@@ -1654,7 +1654,6 @@ h3 {
   cursor: pointer; }
 
 .fs-radio-custom span {
-  float: left;
   position: relative;
   margin-right: 3%;
   padding: 10px;
@@ -1723,6 +1722,7 @@ input[type="radio"]:checked + label::after {
   .navigation {
     display: table !important; }
   .fs-radio-custom span {
+    float: left;
     max-width: 190px !important; }
   .fs-radio-custom {
     margin-left: -45px !important; } }
