@@ -4,6 +4,7 @@
 	.step.large-visible
 		h4.text-grey-20 {{ step }} / {{ totalStep }}
 	.title-box.large-visible
+		h5.remove-bottom(ng-if='data.lname') Bonjour {{ data.lname }},
 		h4 Votre diagnostic personnalisé
 	.navigation
 		.navigation-handler
@@ -14,149 +15,141 @@
 			.dot-button(ng-click="goTo($event, 5)")
 			.dot-button(ng-click="goTo($event, 6)")
 			.dot-button(ng-click="goTo($event, 7)")
-			.dot-button(ng-click="goTo($event, 8)")
 .center
 	.center-box
 		form.box(name="step1" ng-if="step === 1" novalidate).form
-			h2 Sélectionnez votre domaine d'activité
-			select.add-bottom(ng-change="next(step1)" ng-model="data.sector" name="sector" ng-options="item.subItem as item.label for item in values track by item.id", required)
-				option(value="")
-					| Type d'activité 
-
-		form.box(name="step2" ng-if="step === 2" novalidate).form
 			h2 Depuis combien de temps votre entreprise existe-t-elle?
 			.fs-radio-custom
 				span
-					input(id="radio-2-1" type="radio" ng-click="next(step2)" value="1" ng-model="data.time" name="time" ng-required="!data.time" )
+					input(id="radio-2-1" type="radio" ng-click="next(step1)" value="1" ng-model="data.time" name="time" ng-required="!data.time" )
 					label(for="radio-2-1")
 						| Moins de 3 ans.
 				span
-					input(id="radio-2-2" type="radio" ng-click="next(step2)" value="2" ng-model="data.time" name="time" ng-required="!data.time")
+					input(id="radio-2-2" type="radio" ng-click="next(step1)" value="2" ng-model="data.time" name="time" ng-required="!data.time")
 					label(for="radio-2-2")
 						| Entre 3 et 5 ans.
 				span
-					input(id="radio-2-3" type="radio" ng-click="next(step2)" value="3" ng-model="data.time" name="time" ng-required="!data.time")
+					input(id="radio-2-3" type="radio" ng-click="next(step1)" value="3" ng-model="data.time" name="time" ng-required="!data.time")
 					label(for="radio-2-3")
 						| Plus de 5 ans.
 
-		form.box(name="step3" ng-if="step === 3" novalidate).form
+		form.box(name="step2" ng-if="step === 2" novalidate).form
 			h2 En êtes vous le dirigeant ?
 			.fs-radio-custom
 				span
-					input(id="radio-3-1" type="radio" ng-click="next(step3)" value="true" ng-model="data.ischief" name="ischief" ng-required="!data.ischief")
+					input(id="radio-3-1" type="radio" ng-click="next(step2)" value="true" ng-model="data.ischief" name="ischief" ng-required="!data.ischief")
 					label(for="radio-3-1")
 						| Oui.
 				span
-					input(id="radio-3-2" type="radio" ng-click="next(step3)" value="false" ng-model="data.ischief" name="ischief" ng-required="!data.ischief")
+					input(id="radio-3-2" type="radio" ng-click="next(step2)" value="false" ng-model="data.ischief" name="ischief" ng-required="!data.ischief")
 					label(for="radio-3-2")
 						| Non.
 
-		form.box(name="step4" ng-if="step === 4" novalidate).form
+		form.box(name="step3" ng-if="step === 3" novalidate).form
 			h2 Diriez-vous que votre entreprise est conduite par la R&D?
 			.fs-radio-custom
 				span
-					input(id="radio-4-1" type="radio" ng-click="next(step4)" value="1" ng-model="data.randd" name="randd" ng-required="!data.randd")
+					input(id="radio-4-1" type="radio" ng-click="next(step3)" value="1" ng-model="data.randd" name="randd" ng-required="!data.randd")
 					label(for="radio-4-1")
 						| Oui.
 				span
-					input(id="radio-4-2" type="radio" ng-click="next(step4)" value="2" ng-model="data.randd" name="randd" ng-required="!data.randd")
+					input(id="radio-4-2" type="radio" ng-click="next(step3)" value="2" ng-model="data.randd" name="randd" ng-required="!data.randd")
 					label(for="radio-4-2")
 						| Non, mais nous aimerions sérieusement nous y mettre !
 				span
-					input(id="radio-4-3" type="radio" ng-click="next(step4)" value="3" ng-model="data.randd" name="randd" ng-required="!data.randd")
+					input(id="radio-4-3" type="radio" ng-click="next(step3)" value="3" ng-model="data.randd" name="randd" ng-required="!data.randd")
 					label(for="radio-4-3")
 						| Non et franchement, nous n’en voyons pas l’utilité.
 
-		form.box(name="step5" ng-if="step === 5" novalidate).form
+		form.box(name="step4" ng-if="step === 4" novalidate).form
 			h3.text-grey-50(ng-if="data.randd == 1") Super, mettre la R&D au coeur de sa stratégie est certainement le meilleur moyen de révolutionner sa croissance.
 			h3.text-grey-50(ng-if="data.randd == 2 || data.randd == 3") Pourtant de nombreuses entreprises ont pu révolutionner leur croissance, en mettant la R&D au coeur de leur stratégie…
 			h2 Portez-vous un projet digital pour votre entreprise?
 			.fs-radio-custom
 				span
-					input(id="radio-5-1" type="radio" ng-click="next(step5)" value="1" ng-model="data.isdigital" name="isdigital" ng-required="!data.isdigital")
+					input(id="radio-5-1" type="radio" ng-click="next(step4)" value="1" ng-model="data.isdigital" name="isdigital" ng-required="!data.isdigital")
 					label(for="radio-5-1")
 						| Oui et bien avancé !
 				span
-					input(id="radio-5-2" type="radio" ng-click="next(step5)" value="2" ng-model="data.isdigital" name="isdigital" ng-required="!data.isdigital")
+					input(id="radio-5-2" type="radio" ng-click="next(step4)" value="2" ng-model="data.isdigital" name="isdigital" ng-required="!data.isdigital")
 					label(for="radio-5-2")
 						| Oui, mais juste quelques idées.
 				span
-					input(id="radio-5-3" type="radio" ng-click="next(step5)" value="3" ng-model="data.isdigital" name="isdigital" ng-required="!data.isdigital")
+					input(id="radio-5-3" type="radio" ng-click="next(step4)" value="3" ng-model="data.isdigital" name="isdigital" ng-required="!data.isdigital")
 					label(for="radio-5-3")
 						| Non.
 
-		form.box(name="step6" ng-if="step === 6 && data.isdigital < 3" novalidate).form
+		form.box(name="step5" ng-if="step === 5 && data.isdigital < 3" novalidate).form
 			h2 Quel est votre besoin premier pour réaliser votre projet?
 			.fs-radio-custom
 				span
-					input(id="radio-6-1-1" type="radio" ng-click="next(step6)" value="1" ng-model="data.need" name="need" ng-required="!data.need")
+					input(id="radio-6-1-1" type="radio" ng-click="next(step5)" value="1" ng-model="data.need" name="need" ng-required="!data.need")
 					label(for="radio-6-1-1")
 						| Comme beaucoup d’entreprises, des compétences en interne.
 				span
-					input(id="radio-6-1-2" type="radio" ng-click="next(step6)" value="2" ng-model="data.need" name="need" ng-required="!data.need")
+					input(id="radio-6-1-2" type="radio" ng-click="next(step5)" value="2" ng-model="data.need" name="need" ng-required="!data.need")
 					label(for="radio-6-1-2")
 						| Un accompagnement, pour ne pas perdre de temps et minimiser les erreurs.
 				span
-					input(id="radio-6-1-3" type="radio" ng-click="next(step6)" value="3" ng-model="data.need" name="need" ng-required="!data.need")
+					input(id="radio-6-1-3" type="radio" ng-click="next(step5)" value="3" ng-model="data.need" name="need" ng-required="!data.need")
 					label(for="radio-6-1-3")
 						| Du temps, pour le reste nous nous en sortons très bien.
 
-		form.box(name="step6" ng-if="step === 6 && data.isdigital == 3" novalidate).form
+		form.box(name="step5" ng-if="step === 5 && data.isdigital == 3" novalidate).form
 			h2 Diriez-vous que la transition digitale vous inquiète?
 			.fs-radio-custom
 				span
-					input(id="radio-6-2-1" type="radio" ng-click="next(step6)" value="1" ng-model="data.worried" name="worried" ng-required="!data.worried")
+					input(id="radio-6-2-1" type="radio" ng-click="next(step5)" value="1" ng-model="data.worried" name="worried" ng-required="!data.worried")
 					label(for="radio-6-2-1")
 						| Oui, en particulier nos concurrents, de plus en plus audacieux.
 				span
-					input(id="radio-6-2-2" type="radio" ng-click="next(step6)" value="2" ng-model="data.worried" name="worried" ng-required="!data.worried")
+					input(id="radio-6-2-2" type="radio" ng-click="next(step5)" value="2" ng-model="data.worried" name="worried" ng-required="!data.worried")
 					label(for="radio-6-2-2")
 						| Oui, mais de très loin. Nous n’avons aucun exemple concret autour de nous.
 				span
-					input(id="radio-6-2-3" type="radio" ng-click="next(step6)" value="3" ng-model="data.worried" name="worried" ng-required="!data.worried")
+					input(id="radio-6-2-3" type="radio" ng-click="next(step5)" value="3" ng-model="data.worried" name="worried" ng-required="!data.worried")
 					label(for="radio-6-2-3")
 						| Non, mon domaine d’activité ne sera pas disrupté.
 
-		form.box(name="step7" ng-if="step === 7 && data.isdigital < 3" novalidate).form
+		form.box(name="step6" ng-if="step === 6 && data.isdigital < 3" novalidate).form
 			h2 Votre projet a-t-il un besoin important en matière d'algorithmes?
 			.fs-radio-custom
 				span
-					input(id="radio-7-1-1" type="radio" ng-click="next(step7)" value="1" ng-model="data.algo" name="algo" ng-required="!data.algo")
+					input(id="radio-7-1-1" type="radio" ng-click="next(step6)" value="1" ng-model="data.algo" name="algo" ng-required="!data.algo")
 					label(for="radio-7-1-1")
 						| Oui.
 				span
-					input(id="radio-7-1-2" type="radio" ng-click="next(step7)" value="2" ng-model="data.algo" name="algo" ng-required="!data.algo")
+					input(id="radio-7-1-2" type="radio" ng-click="next(step6)" value="2" ng-model="data.algo" name="algo" ng-required="!data.algo")
 					label(for="radio-7-1-2")
 						| Non.
 				span
-					input(id="radio-7-1-3" type="radio" ng-click="next(step7)" value="3" ng-model="data.algo" name="algo" ng-required="!data.algo")
+					input(id="radio-7-1-3" type="radio" ng-click="next(step6)" value="3" ng-model="data.algo" name="algo" ng-required="!data.algo")
 					label(for="radio-7-1-3")
 						| Je ne sais pas encore.
 
-		form.box(name="step7" ng-if="step === 7 && data.isdigital == 3" novalidate).form
+		form.box(name="step6" ng-if="step === 6 && data.isdigital == 3" novalidate).form
 			h2 Quel est le frein principal à la transition digitale dans votre entreprise?
 			.fs-radio-custom
 				span
-					input(id="radio-7-2-1" type="radio" ng-click="next(step7)" value="1" ng-model="data.isproblem" name="isproblem" ng-required="!data.isproblem")
+					input(id="radio-7-2-1" type="radio" ng-click="next(step6)" value="1" ng-model="data.isproblem" name="isproblem" ng-required="!data.isproblem")
 					label(for="radio-7-2-1")
 						| Un manque de compétences en interne.
 				span
-					input(id="radio-7-2-2" type="radio" ng-click="next(step7)" value="2" ng-model="data.isproblem" name="isproblem" ng-required="!data.isproblem")
+					input(id="radio-7-2-2" type="radio" ng-click="next(step6)" value="2" ng-model="data.isproblem" name="isproblem" ng-required="!data.isproblem")
 					label(for="radio-7-2-2")
 						| Un manque d'accompagnement.
 				span
-					input(id="radio-7-2-3" type="radio" ng-click="next(step7)" value="3" ng-model="data.isproblem" name="isproblem" ng-required="!data.isproblem")
+					input(id="radio-7-2-3" type="radio" ng-click="next(step6)" value="3" ng-model="data.isproblem" name="isproblem" ng-required="!data.isproblem")
 					label(for="radio-7-2-3")
 						| Je ne sais pas quel avantage mon entreprise pourrait en retirer.
 				span
-					input(id="radio-7-2-4" type="radio" ng-click="next(step7)" value="4" ng-model="data.isproblem" name="isproblem" ng-required="!data.isproblem")
+					input(id="radio-7-2-4" type="radio" ng-click="next(step6)" value="4" ng-model="data.isproblem" name="isproblem" ng-required="!data.isproblem")
 					label(for="radio-7-2-4")
 						| Je ne crois pas à la transition digitale pour mon entreprise/secteur d'activité.
 
-		form.box(name="step8" autocomplete="false" ng-if="step === 8" novalidate).form
+		form.box(name="step7" autocomplete="false" ng-if="step === 7" novalidate).form
 			.six.columns.text-left
 				h2 Merci !
-				h4 {{ data.sector.name }} comme beaucoup, est un domaine très sensible à la disruption.
 				p(ng-if="data.time == 2") En particulier pour les entreprises entre trois et cinq ans d'existence pour lesquelles la transition digitale est souvent plus difficile à amorcer. Malgré la difficulté, la pérennité d’une entreprise dépend souvent de sa capacité à réformer ses pratiques.
 				p(ng-if="data.time == 3") En particulier pour les entreprises de plus de cinq années d'existence pour lesquelles la transition digitale est souvent plus difficile à amorcer. Malgré la difficulté, la pérennité d’une entreprise dépend souvent de sa capacité à réformer ses pratiques.
 				p(ng-if="data.time == 1")
@@ -171,6 +164,9 @@
 			.six.columns.text-right.quad-bottom
 				h2 Pour vous recontacter
 				h4 Laissez nous vos coordonées
+				select.big.add-bottom(ng-model="data.sector" name="sector" ng-options="item.subItem as item.label for item in values track by item.id", required)
+					option(value="")
+						| Type d'activité 
 				input.big.add-bottom(placeholder="Votre email", type="email" ng-model="data.email", autocomplete="false", required)
 				input.big.add-bottom(placeholder="Nom de votre entreprise", type="text", ng-model="data.company", autocomplete="false", required)
 				input.big.add-bottom(placeholder="Nom", type="text", ng-model="data.fname", autocomplete="false", required)
@@ -178,3 +174,4 @@
 				input.big.add-bottom(placeholder="Téléphone", type="tel", ng-model="data.phone", autocomplete="false", required)
 				button.add-top.button.dark(type="submit", ng-click="sendForm()", ng-class="{off: step7.$invalid}")
 					span Valider
+

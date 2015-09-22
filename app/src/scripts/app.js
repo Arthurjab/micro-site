@@ -143,7 +143,7 @@ app.controller('formCtrl', function ($scope, $timeout, $stateParams, $http, $sta
 
   $scope.step = 1;
   $scope.maxStep = 1;
-  $scope.totalStep = 8;
+  $scope.totalStep = 7;
 
   var progressBar = angular.element(document.querySelector('.progress-bar'));
   var nav = angular.element(document.querySelector('.navigation-handler'));

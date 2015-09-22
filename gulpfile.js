@@ -6,48 +6,48 @@
 
   var paths = {
       clean: {
-        files: './dist'
+        files: './app/dist'
       },
       serve : {
         port: '8000',
-        root: './dist'
+        root: './app/dist'
       },
       fonts: {
-        files: './src/assets/fonts/**/*',
-        dest: './dist/assets/fonts/',
-        watch: ['./src/assets/fonts/**/*']
+        files: './app/src/assets/fonts/**/*',
+        dest: './app/dist/assets/fonts/',
+        watch: ['./app/src/assets/fonts/**/*']
       },
       vendor: {
         name: 'vendor.min.js',
-        dest: './dist/vendor/',
+        dest: './app/dist/vendor/',
         watch: './bower_components/*'
       },
       templates: {
-          files: './src/**/*.jade',
-          dest: './dist/',
-          watch: './src/**/*.jade'
+          files: './app/src/**/*.jade',
+          dest: './app/dist/',
+          watch: './app/src/**/*.jade'
       },
       styles: {
-          files:  './src/styles/*.scss',
-          dest: './dist/styles/',
-          watch: './src/styles/**/*.scss'
+          files:  './app/src/styles/*.scss',
+          dest: './app/dist/styles/',
+          watch: './app/src/styles/**/*.scss'
       },
       ressources: {
-        files: './src/ressources/*',
-        dest: './dist/ressources/',
-        watch: './src/ressources/*'
+        files: './app/src/ressources/*',
+        dest: './app/dist/ressources/',
+        watch: './app/src/ressources/*'
       },
       scripts: {
-          files: ['./src/scripts/directives/*.js', './src/scripts/app.js', './src/scripts/services/*.js', './src/scripts/controllers/*.js'],
-          dest: './dist/scripts/',
+          files: ['./app/src/scripts/directives/*.js', './app/src/scripts/app.js', './app/src/scripts/services/*.js', './app/src/scripts/controllers/*.js'],
+          dest: './app/dist/scripts/',
           name: 'app.min.js',
-          watch: './src/scripts/**/*.js'
+          watch: './app/src/scripts/**/*.js'
       },
       assets : {
-        files: ['./src/assets/imgs/**/*{png,svg,jpg}'],
-        dest: './dist/assets/imgs/',
-        watch: './src/assets/imgs/**/*',
-        clean: './dist/assets/imgs/**/*'
+        files: ['./app/src/assets/imgs/**/*{png,svg,jpg}'],
+        dest: './app/dist/assets/imgs/',
+        watch: './app/src/assets/imgs/**/*',
+        clean: './app/dist/assets/imgs/**/*'
       }
   }
   
@@ -56,7 +56,7 @@
   }
 
   gulp.task('clean', getTask('clean'));
-  gulp.task('serve', getTask('serve'));
+  gulp.task('serve', getTask('nodemon'));
   gulp.task('style', getTask('style'));
   gulp.task('assets', getTask('assets'));
   gulp.task('jade', getTask('jade'));
