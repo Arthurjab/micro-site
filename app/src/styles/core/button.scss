@@ -258,20 +258,7 @@
 
             }
 
-
-
-
     }
-
-
-  .form.ng-pristine:not(.ng-valid) .button[type="submit"], .form.ng-invalid .button[type="submit"] {
-    background-color:$color-grey-20;
-    cursor:initial;
-    &:hover {
-      background-color: lighten($color-grey-20, 5%);
-    }
-  }
-
 
 
 
