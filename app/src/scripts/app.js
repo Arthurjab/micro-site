@@ -1,5 +1,57 @@
 var app = angular.module('app', ['ui.router', 'duScroll', 'duParallax']);
 
+
+app.directive('toggleChildHeight', function() {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+
+            var linkHeight = document.querySelector('.question a').offsetHeight;
+
+            element.parent().css({ height: linkHeight });
+
+            element.bind('click', function() {
+
+                console.log(element.parent());
+                element.parent().toggleClass('active');
+                
+                var actualHeight = angular.element(element.parent())[0].offsetHeight;
+                var contentHeight = angular.element(element.next())[0].offsetHeight + 40;
+                var totalHeight = linkHeight + contentHeight;
+                console.log(totalHeight);
+                
+
+                if(totalHeight == actualHeight)
+                    element.parent().css({ height: linkHeight });
+                else
+                    element.parent().css({ height: totalHeight });
+
+
+            });
+        }
+    };
+});
+
+app.directive("phoneformat", function () {
+    return {
+        restrict: "A",
+        require: "ngModel",
+        link: function (scope, elm, attrs, ctrl) {
+            ctrl.$parsers.unshift(function (phoneInput) {
+                phoneInput = phoneInput.trim();
+                if (phoneInput && phoneInput.length == 10 && !isNaN(phoneInput)) {
+                    ctrl.$setValidity('phoneformat', true);
+                    return phoneInput;
+                } else {
+                    ctrl.$setValidity('phoneformat', false);
+                    return undefined;
+
+                }
+            });
+        }
+    };
+});
+
 app.config(function($stateProvider, $urlRouterProvider) {
     
     $urlRouterProvider.otherwise('/');
@@ -97,7 +149,6 @@ app.controller('formCtrl', function ($scope, $timeout, $stateParams, $http, $sta
     }];
 
     $scope.data = {
-        sector:"",
         time:"",
         randd:"",
         ischief:"",
@@ -107,6 +158,7 @@ app.controller('formCtrl', function ($scope, $timeout, $stateParams, $http, $sta
         algo:"",
         isproblem:"",
 
+        sector:"",
         email:"",
         fname:"",
         lname:"",
@@ -118,6 +170,8 @@ app.controller('formCtrl', function ($scope, $timeout, $stateParams, $http, $sta
     {
       $http.get('/getMyFormBack/' + $stateParams.id)
       .then(function(response){
+        console.log(response);
+        $scope.data.sector = response.data.sector;
         $scope.data.email = response.data.email;
         $scope.data.fname = response.data.fname;
         $scope.data.lname = response.data.lname;
@@ -125,19 +179,25 @@ app.controller('formCtrl', function ($scope, $timeout, $stateParams, $http, $sta
       });
     }
 
+    var button = angular.element(document.getElementById('validate'));
 
     $scope.sendForm = function(form){
-        var keepData = angular.copy($scope.data);
-        keepData.sector = angular.copy($scope.data.sector.response);
-        console.log(keepData);
-        $http.post('/postDiagnostic', keepData)
-            .success(function(a,b){
-                $state.go('nav.home');
-                console.log(a,b);
-            })
-            .error(function(a,b){
-                console.log(a,b);
-            });
+        if (form.$valid)
+        {
+          button.addClass('on');
+          var keepData = angular.copy($scope.data);
+          keepData.sector = angular.copy($scope.data.sector.response);
+          console.log(keepData);
+          $http.post('/postDiagnostic', keepData)
+              .success(function(a,b){
+                  $state.go('nav.home');
+                  console.log(a,b);
+              })
+              .error(function(a,b){
+                  button.removeClass('on');
+                  console.log(a,b);
+              });
+        }
     };
 
 

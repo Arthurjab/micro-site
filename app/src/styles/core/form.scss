@@ -54,16 +54,6 @@
 		  outline: 0;
 		}
 
-		input.ng-invalid:not(.ng-pristine) {
-		  border: 1px solid $color-danger;
-		}
-
-		.form.ng-submitted {
-			input.ng-invalid, select.ng-invalid {
-			  border: 1px solid $color-danger;
-			}
-		}
-
 		input[disabled='disabled'] {
           background-color: $color-grey-10;	
           &.bounce {

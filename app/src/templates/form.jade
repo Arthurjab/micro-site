@@ -150,6 +150,7 @@
 		form.box(name="step7" autocomplete="false" ng-if="step === 7" novalidate).form
 			.six.columns.text-left
 				h2 Merci !
+				hr.lines.fly-in
 				p(ng-if="data.time == 2") En particulier pour les entreprises entre trois et cinq ans d'existence pour lesquelles la transition digitale est souvent plus difficile à amorcer. Malgré la difficulté, la pérennité d’une entreprise dépend souvent de sa capacité à réformer ses pratiques.
 				p(ng-if="data.time == 3") En particulier pour les entreprises de plus de cinq années d'existence pour lesquelles la transition digitale est souvent plus difficile à amorcer. Malgré la difficulté, la pérennité d’une entreprise dépend souvent de sa capacité à réformer ses pratiques.
 				p(ng-if="data.time == 1")
@@ -162,16 +163,17 @@
 				p(ng-if="!data.isdigital")
 					| Ne pas avoir de projet de disruption pour son entreprise n’est pas irrémédiable. Pourtant, les entreprises qui prennent le pas de la transition digitale bénéficient d’un avantage concurrentiel indéniable, de par la rareté (provisoire) de ce type de conduite chez les dirigeant.
 			.six.columns.text-right.quad-bottom
-				h2 Pour vous recontacter
-				h4 Laissez nous vos coordonées
-				select.big.add-bottom(ng-model="data.sector" name="sector" ng-options="item.subItem as item.label for item in values track by item.id", required)
+				h2 Laissez vos coordonées
+				hr.lines.fly-in
+				select.big.add-bottom(ng-if="!data.lname", ng-model="data.sector" name="sector" ng-options="item.subItem as item.label for item in values track by item.id", required)
 					option(value="")
 						| Type d'activité 
-				input.big.add-bottom(placeholder="Votre email", type="email" ng-model="data.email", autocomplete="false", required)
+				input.big.add-bottom(placeholder="Votre email professionnel", type="email" ng-model="data.email", autocomplete="false", required)
 				input.big.add-bottom(placeholder="Nom de votre entreprise", type="text", ng-model="data.company", autocomplete="false", required)
 				input.big.add-bottom(placeholder="Nom", type="text", ng-model="data.fname", autocomplete="false", required)
 				input.big.add-bottom(placeholder="Prenom", type="text", ng-model="data.lname", autocomplete="false", required)
-				input.big.add-bottom(placeholder="Téléphone", type="tel", ng-model="data.phone", autocomplete="false", required)
-				button.add-top.button.dark(type="submit", ng-click="sendForm()", ng-class="{off: step7.$invalid}")
+				input.big.add-bottom(placeholder="Téléphone (ex : 0659578609)", type="text", phoneformat, ng-model="data.phone", autocomplete="false", required)
+				button#validate.add-top.button.dark.spinner(type="submit", ng-click="sendForm(step7)")
 					span Valider
+					.spin
 

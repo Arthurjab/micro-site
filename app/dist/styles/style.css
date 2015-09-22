@@ -1193,12 +1193,6 @@ h3 {
     .button.mini-spinner.on .spinner  {
       opacity: 1 !important; }
 
-.form.ng-pristine:not(.ng-valid) .button[type="submit"], .form.ng-invalid .button[type="submit"] {
-  background-color: #d9d9d9;
-  cursor: initial; }
-  .form.ng-pristine:not(.ng-valid) .button[type="submit"]:hover, .form.ng-invalid .button[type="submit"]:hover {
-    background-color: #e6e6e6; }
-
 /* Sass bug forces me to force this ^
 ------------------------------------|--------------------------*/
 .button.mini-spinner.on i {
@@ -1263,8 +1257,6 @@ h3 {
   .form select:focus {
     border: 1px solid #FFB047;
     outline: 0; }
-  .form input.ng-invalid:not(.ng-pristine) {
-    border: 1px solid #D23D29; }
   .form input[disabled='disabled'] {
     background-color: #f2f2f2; }
     .form input[disabled='disabled'].bounce {
@@ -2192,3 +2184,9 @@ a {
   display: none; }
   #form.open {
     display: block; }
+
+input.ng-invalid:not(.ng-pristine) {
+  border: 1px solid #D23D29; }
+
+.form.ng-submitted input.ng-invalid, .form.ng-submitted select.ng-invalid, .form.ng-submitted textarea.ng-invalid {
+  border: 1px solid #D23D29; }

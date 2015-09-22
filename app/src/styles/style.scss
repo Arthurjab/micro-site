@@ -105,3 +105,13 @@ a {
 	}
 
 }
+
+input.ng-invalid:not(.ng-pristine) {
+  border: 1px solid $color-danger;
+}
+
+.form.ng-submitted {
+	input.ng-invalid, select.ng-invalid, textarea.ng-invalid {
+	  border: 1px solid $color-danger;
+	}
+}
