@@ -6,7 +6,7 @@ app.directive('toggleChildHeight', function() {
         restrict: 'A',
         link: function(scope, element, attrs) {
 
-            var linkHeight = document.querySelector('.question a').offsetHeight;
+            var linkHeight = document.querySelector('.question').offsetHeight;
 
             element.parent().css({ height: linkHeight });
 
@@ -15,8 +15,8 @@ app.directive('toggleChildHeight', function() {
                 console.log(element.parent());
                 element.parent().toggleClass('active');
                 
-                var actualHeight = angular.element(element.parent())[0].offsetHeight;
-                var contentHeight = angular.element(element.next())[0].offsetHeight + 40;
+                var actualHeight = angular.element(element)[0].offsetHeight;
+                var contentHeight = angular.element(element.next())[0].offsetHeight;
                 var totalHeight = linkHeight + contentHeight;
                 console.log(totalHeight);
                 
@@ -149,15 +149,6 @@ app.controller('formCtrl', function ($scope, $timeout, $stateParams, $http, $sta
     }];
 
     $scope.data = {
-        time:"",
-        randd:"",
-        ischief:"",
-        isdigital:"",
-        need:"",
-        worried:"",
-        algo:"",
-        isproblem:"",
-
         sector:"",
         email:"",
         fname:"",
@@ -238,6 +229,7 @@ app.controller('formCtrl', function ($scope, $timeout, $stateParams, $http, $sta
   };
 
   $scope.next = function (form) {
+    console.log($scope.data);
     if (!form.$invalid) {
         $scope.step++;
         if ($scope.maxStep < $scope.step)

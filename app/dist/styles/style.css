@@ -2190,3 +2190,9 @@ input.ng-invalid:not(.ng-pristine) {
 
 .form.ng-submitted input.ng-invalid, .form.ng-submitted select.ng-invalid, .form.ng-submitted textarea.ng-invalid {
   border: 1px solid #D23D29; }
+
+.question {
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out; }

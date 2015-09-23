@@ -115,3 +115,7 @@ input.ng-invalid:not(.ng-pristine) {
 	  border: 1px solid $color-danger;
 	}
 }
+
+.question {
+	@include transition();
+}
