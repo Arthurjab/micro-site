@@ -124,10 +124,27 @@ app.controller('whoamiCtrl', function ($scope) {
 
 });
 
-app.controller('homeCtrl', function ($scope) {
+app.controller('homeCtrl', function ($scope, $http) {
 
-        var contactButton = angular.element(document.getElementById('button-validate'));
-        var formBox = angular.element(document.getElementById('form'));
+        var contactButton = angular.element(document.getElementById('contact-validate'));
+
+        $scope.sendContact = function(form){
+          console.log(1);
+            if (form.$valid)
+            {
+              console.log(2);
+              contactButton.addClass('on');
+              var keepData = angular.copy($scope.data);
+              keepData.contact = true;
+              $http.post('/postDiagnostic', keepData)
+                  .success(function(a,b){
+                      contactButton.removeClass('on');
+                  })
+                  .error(function(a,b){
+                      contactButton.removeClass('on');
+                  });
+            }
+        };
 
     });
 
