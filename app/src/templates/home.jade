@@ -24,7 +24,7 @@ section.texture#contact
 				input.big.add-bottom(placeholder="Nom de votre entreprise", type="text", ng-model="data.company", autocomplete="off", required)
 				textarea.big.add-bottom(placeholder="Votre message", type="text", ng-model="data.message", autocomplete="off", required)
 				.clearfix
-				button.button.cta-2.double-top.octo-bottom.spinner.dark(id="button-validate", type="submit", ng-click="sendContact()")
+				button.button.cta-2.double-top.octo-bottom.spinner.dark(id="contact-validate", type="submit", ng-click="sendContact(form)")
 					span Envoyer
 					.spin
 		.four.columns.large-visible
