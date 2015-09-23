@@ -39,7 +39,7 @@ app.post('/postDiagnostic', function(req,res){
 		Son adresse email: " + req.body.email + "<br>\
 		Son secteur d\'activité: " + req.body.sector + "<br>\
 		Son entreprise: " + req.body.company + "\
-		<br><br>Voici son questionnaire finalisé : <br><br>\",
+		<br><br>Voici son questionnaire finalisé : <br><br>",
 		
 		"subject": "Un nouveau prospect pour EDR",
 		"from_email": "hvillain@student.42.fr",
