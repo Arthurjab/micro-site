@@ -6,31 +6,32 @@ app.directive('toggleChildHeight', function() {
         restrict: 'A',
         link: function(scope, element, attrs) {
 
-            var linkHeight = document.querySelector('.question').offsetHeight;
+          var linkHeight = 100;
 
-            element.parent().css({ height: linkHeight });
+          element.parent().css({ height: linkHeight });
 
             element.bind('click', function() {
 
-                console.log(element.parent());
-                element.parent().toggleClass('active');
-                
-                var actualHeight = angular.element(element)[0].offsetHeight;
-                var contentHeight = angular.element(element.next())[0].offsetHeight;
-                var totalHeight = linkHeight + contentHeight;
-                console.log(totalHeight);
+              console.log(element.parent());
+              element.parent().toggleClass('active');
+            
+            var actualHeight = angular.element(element.parent())[0].offsetHeight;
+            var contentHeight = angular.element(element.next())[0].offsetHeight + 40;
+            var totalHeight = linkHeight + contentHeight;
+            console.log(totalHeight);
                 
 
                 if(totalHeight == actualHeight)
-                    element.parent().css({ height: linkHeight });
+                  element.parent().css({ height: linkHeight });
                 else
-                    element.parent().css({ height: totalHeight });
+                  element.parent().css({ height: totalHeight });
 
 
             });
         }
     };
 });
+
 
 app.directive("phoneformat", function () {
     return {
