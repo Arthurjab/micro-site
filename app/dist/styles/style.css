@@ -2133,6 +2133,8 @@ input.ng-invalid:not(.ng-pristine) {
   display: block;
   overflow: hidden; }
   .question a {
+    display: block;
+    width: 100%;
     cursor: pointer; }
     .question a h2 {
       opacity: 0.6;
