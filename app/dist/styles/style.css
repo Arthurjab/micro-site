@@ -2195,4 +2195,16 @@ input.ng-invalid:not(.ng-pristine) {
   -webkit-transition: all 200ms ease-in-out;
   -moz-transition: all 200ms ease-in-out;
   -o-transition: all 200ms ease-in-out;
-  transition: all 200ms ease-in-out; }
+  transition: all 200ms ease-in-out;
+  display: block;
+  overflow: hidden; }
+  .question a {
+    cursor: pointer; }
+    .question a h2 {
+      opacity: 0.6;
+      -webkit-transition: opacity 200ms ease-in-out;
+      -moz-transition: opacity 200ms ease-in-out;
+      -o-transition: opacity 200ms ease-in-out;
+      transition: opacity 200ms ease-in-out; }
+      .question a h2:hover {
+        opacity: 1; }
