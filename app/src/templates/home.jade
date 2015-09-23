@@ -5,7 +5,7 @@ section.texture
 		h1.text-dark.text-center REJOIGNEZ LES ENTREPRISES QUI ONT PRIS DE L'AVANCE
 		h5.text-grey-50.i.text-center Révolutionnez l'expérience de vos clients et optimisez la productivité de votre entreprise.
 		.button-box.octo-bottom
-			button.button.light.centered(ui-sref="form") Passez le test !
+			button.button.cta-1.light.centered(ui-sref="form") Passez le test !
 section.container
 	.clearfix.octo-bottom
 	.three.columns.large-visible
@@ -24,7 +24,7 @@ section.texture#contact
 				input.big.add-bottom(placeholder="Nom de votre entreprise", type="text", ng-model="data.company", autocomplete="off", required)
 				textarea.big.add-bottom(placeholder="Votre message", type="text", ng-model="data.message", autocomplete="off", required)
 				.clearfix
-				button.button.double-top.octo-bottom.spinner.dark(id="button-validate", type="submit", ng-click="sendContact()")
+				button.button.cta-2.double-top.octo-bottom.spinner.dark(id="button-validate", type="submit", ng-click="sendContact()")
 					span Envoyer
 					.spin
 		.four.columns.large-visible

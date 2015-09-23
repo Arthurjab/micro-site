@@ -117,6 +117,7 @@ input.ng-invalid:not(.ng-pristine) {
 }
 
 .question {
+	@include unselectable();
 	@include transition();
 	display:block;
 	overflow:hidden;
@@ -127,3 +128,50 @@ input.ng-invalid:not(.ng-pristine) {
 		}
 	}
 }
+
+
+
+
+.button.cta-1 {
+  position: relative;
+  top: 0px;
+  font-family: "Open Sans";
+  text-decoration: none;
+  font-size: 22px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  @include box-shadow(0px, 5px, 0px, $color-light-dark);
+  text-shadow: 1px 1px 1px $color-light-dark;
+  @include border-radius(5px);
+  @include transition();
+	&:active {
+	  color:white;
+	  top: 5px;
+	  -webkit-box-shadow: none !important;
+	  -moz-box-shadow: none !important;
+	  -ms-box-shadow: none !important;
+	  -o-box-shadow: none !important;
+	  box-shadow: none !important;
+	}
+}
+
+.button.cta-2 {
+  position: relative;
+  top: 0px;
+  padding: 5px 15px;
+  @include box-shadow(0px, 5px, 0px, $color-light-dark);
+  text-shadow: 1px 1px 1px $color-light-dark;
+  @include border-radius(5px);
+  @include transition();
+	&:active {
+	  color:white;
+	  top: 5px;
+	  -webkit-box-shadow: none !important;
+	  -moz-box-shadow: none !important;
+	  -ms-box-shadow: none !important;
+	  -o-box-shadow: none !important;
+	  box-shadow: none !important;
+	}
+}
+
+

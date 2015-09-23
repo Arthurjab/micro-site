@@ -396,10 +396,10 @@ th {
   border-radius: 100%; }
 
 .box-shadow {
-  -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
-  -o-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); }
+  -webkit-box-shadow: 3px 3px 5px grey;
+  -moz-box-shadow: 3px 3px 5px grey;
+  -o-box-shadow: 3px 3px 5px grey;
+  box-shadow: 3px 3px 5px grey; }
 
 .cover {
   -webkit-background-size: cover;
@@ -444,76 +444,6 @@ th {
     display: table-cell;
     vertical-align: middle; }
 
-/* # Library
-	============================================= */
-.link-box {
-  cursor: pointer;
-  width: 100%;
-  height: 100%; }
-
-.container:after,
-.row:after,
-.u-cf, .clearfix {
-  content: "";
-  display: table;
-  clear: both;
-  min-height: 0px;
-  overflow: hidden;
-  display: block; }
-
-/* ## Graphical ehancements
-		============================================= */
-/* NOTE: For more informations about text-rendering, check this out
-					 https://developer.mozilla.org/fr/docs/Web/CSS/text-rendering */
-.border-box {
-  -ms-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box; }
-
-.circle {
-  -webkit-border-radius: 100%;
-  -moz-border-radius: 100%;
-  -o-border-radius: 100%;
-  border-radius: 100%; }
-
-.box-shadow {
-  -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
-  -o-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); }
-
-.cover {
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover; }
-
-.unselectable {
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none; }
-
-.antialiased {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizelegibility; }
-
-/* ## Require fonts
-		================================================== */
-/* NOTE: To use include-font directive,
-					 be sure to have theses four formats in the right directory
-
-					 .ttf - Works in most browsers except IE and iPhone.
-					 .eot - IE only. 
-					 .woff - Compressed, emerging standard. 
-					 .svg - iPhone/iPad
-
-					 .include-font("path/to/font", "font-name", "font-weight", "font-style");
-			*/
-/* ## Font size system
-		================================================== */
 /* ## Animations mixins
 		================================================== */
 .fade {
@@ -2192,6 +2122,10 @@ input.ng-invalid:not(.ng-pristine) {
   border: 1px solid #D23D29; }
 
 .question {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
   -webkit-transition: all 200ms ease-in-out;
   -moz-transition: all 200ms ease-in-out;
   -o-transition: all 200ms ease-in-out;
@@ -2208,3 +2142,59 @@ input.ng-invalid:not(.ng-pristine) {
       transition: opacity 200ms ease-in-out; }
       .question a h2:hover {
         opacity: 1; }
+
+.button.cta-1 {
+  position: relative;
+  top: 0px;
+  font-family: "Open Sans";
+  text-decoration: none;
+  font-size: 22px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  -webkit-box-shadow: 0px 5px 0px #1a1c27;
+  -moz-box-shadow: 0px 5px 0px #1a1c27;
+  -o-box-shadow: 0px 5px 0px #1a1c27;
+  box-shadow: 0px 5px 0px #1a1c27;
+  text-shadow: 1px 1px 1px #1a1c27;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out; }
+  .button.cta-1:active {
+    color: white;
+    top: 5px;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -ms-box-shadow: none !important;
+    -o-box-shadow: none !important;
+    box-shadow: none !important; }
+
+.button.cta-2 {
+  position: relative;
+  top: 0px;
+  padding: 5px 15px;
+  -webkit-box-shadow: 0px 5px 0px #1a1c27;
+  -moz-box-shadow: 0px 5px 0px #1a1c27;
+  -o-box-shadow: 0px 5px 0px #1a1c27;
+  box-shadow: 0px 5px 0px #1a1c27;
+  text-shadow: 1px 1px 1px #1a1c27;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out; }
+  .button.cta-2:active {
+    color: white;
+    top: 5px;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -ms-box-shadow: none !important;
+    -o-box-shadow: none !important;
+    box-shadow: none !important; }

@@ -163,7 +163,7 @@
 				p(ng-if="!data.isdigital")
 					| Ne pas avoir de projet de disruption pour son entreprise n’est pas irrémédiable. Pourtant, les entreprises qui prennent le pas de la transition digitale bénéficient d’un avantage concurrentiel indéniable, de par la rareté (provisoire) de ce type de conduite chez les dirigeant.
 			.six.columns.text-right.quad-bottom
-				h2 Laissez vos coordonées
+				h2 Laissez vos coordonnées
 				hr.lines.fly-in
 				select.big.add-bottom(ng-if="!data.lname", ng-model="data.sector" name="sector" ng-options="item.subItem as item.label for item in values track by item.id", required)
 					option(value="")
@@ -173,7 +173,7 @@
 				input.big.add-bottom(placeholder="Nom", type="text", ng-model="data.fname", autocomplete="false", required)
 				input.big.add-bottom(placeholder="Prenom", type="text", ng-model="data.lname", autocomplete="false", required)
 				input.big.add-bottom(placeholder="Téléphone (ex : 0659578609)", type="text", phoneformat, ng-model="data.phone", autocomplete="false", required)
-				button#validate.add-top.button.dark.spinner(type="submit", ng-click="sendForm(step7)")
+				button#validate.add-top.cta-2.button.dark.spinner(type="submit", ng-click="sendForm(step7)")
 					span Valider
 					.spin
 
