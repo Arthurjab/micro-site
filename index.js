@@ -3,6 +3,8 @@ var bodyParser = require('body-parser');
 var app = express();
 var http = require('http');
 var jwt = require('jwt-simple');
+var mandrill = require('./node_modules/mandrill-api/mandrill');
+var mandrill_client = new mandrill.Mandrill('2HmLD1XMdKtb4epIEGPjhA');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -17,22 +19,24 @@ app.get('/getMyFormBack/:token', function(req,res){
 	var token = req.params.token;
 	var secret = 'ThisIsTheSecretIDontWantUTOKNOW';
 	var decoded = jwt.decode(token, secret);
-	console.log(decoded);
-	http.get('http://derock.herokuapp.com/diagIsDone/' + token, function(resp){
-		console.log(resp);
-		return res.send(200, decoded);
-	});
+	return res.send(200, decoded);
 });
 
 app.post('/postDiagnostic', function(req,res){
-	console.log(res);
 	var async = false;
 	var ip_pool = "Main Pool";
 	var send_at = "example send_at";
 	var message = {
-		"html": "Hello Jab !",
-		"text": "Nouveau prospect",
-		"subject": "Livre blanc",
+		"html": "Hello Jab !<br>Vous avez reçu un nouveau lead.<br><br>\
+		Son identité : " + req.body.fname + " " + req.body.lname + "<br>\
+		Son numéro de téléphone: " + req.body.phone + "<br>\
+		Son adresse email: " + req.body.email + "<br>\
+		Son secteur d\'activité: " + req.body.sector + "<br>\
+		Son entreprise: " + req.body.company + "\
+		<br><br>Voici son questionnaire finalisé : <br><br>\
+		" + req.body.step1 + "<br>" + req.body.step2 + "<br>" + req.body.step3 + "<br>" + req.body.step4 + "<br>" + req.body.step5 + "<br>" + req.body.step6 + "<br>",
+		"text": "Un nouveau prospect",
+		"subject": "Un nouveau prospect pour EDR",
 		"from_email": "hvillain@student.42.fr",
 		"from_name": req.body.lname + ' ' + req.body.fname,
 		"to": [{
@@ -61,17 +65,15 @@ app.post('/postDiagnostic', function(req,res){
 	};
 
 	mandrill_client.messages.send({"message": message, "async": async, "ip_pool": ip_pool, "send_at": ''}, function(result) {
-	    res.send(200, {message:'Merci! Vous allez recevoir sous peu un lien de téléchargement dans votre boîte mail.\nVous êtes éligible à la disruption? Passez le test!'});
+	    res.send(200);
 	}, function(e) {
 	    console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
-	    res.send(406, e);
-	    return res.redirect('/');
+	    res.send(404, e);
 	});
 });
 
 app.get('/*', function(request, response) {
   response.sendFile(__dirname + '/app/dist/index.html');
-  //response.redirect('/');
 });
 
 app.listen(app.get('port'), function() {

@@ -179,10 +179,10 @@ app.controller('formCtrl', function ($scope, $timeout, $stateParams, $http, $sta
           button.addClass('on');
           var keepData = angular.copy($scope.data);
           keepData.sector = angular.copy($scope.data.sector.response);
-          console.log(keepData);
           $http.post('/postDiagnostic', keepData)
               .success(function(a,b){
                   $state.go('nav.home');
+                  calq.action.track('Opt-in', {"data": keepData});
                   console.log(a,b);
               })
               .error(function(a,b){
@@ -230,8 +230,8 @@ app.controller('formCtrl', function ($scope, $timeout, $stateParams, $http, $sta
   };
 
   $scope.next = function (form) {
-    console.log($scope.data);
     if (!form.$invalid) {
+        calq.action.track('Question' + $scope.step, {'Answer': $scope.data['step' + $scope.step]});
         $scope.step++;
         if ($scope.maxStep < $scope.step)
         {
