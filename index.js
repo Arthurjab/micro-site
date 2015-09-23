@@ -9,7 +9,7 @@ var mandrill_client = new mandrill.Mandrill('2HmLD1XMdKtb4epIEGPjhA');
 
 // leads@jab101.com
 // " + req.body.step1 + "<br>" + req.body.step2 + "<br>" + req.body.step3 + "<br>" + req.body.step4 + "<br>" + req.body.step5 + "<br>" + req.body.step6 + "<br>",
-		"text": "Un nouveau prospect",
+//		"text": "Un nouveau prospect",
 
 app.set('port', (process.env.PORT || 5000));
 
