@@ -1,12 +1,13 @@
 var app = angular.module('app', ['ui.router', 'duScroll', 'duParallax']);
 
 
-app.directive('toggleChildHeight', function() {
+app.directive('toggleChildHeight', function($window) {
     return {
         restrict: 'A',
         link: function(scope, element, attrs) {
 
-          var linkHeight = 100;
+          var w = angular.element($window);
+          var linkHeight = angular.element(element)[0].offsetHeight;
 
           element.parent().css({ height: linkHeight });
 
@@ -15,19 +16,43 @@ app.directive('toggleChildHeight', function() {
               console.log(element.parent());
               element.parent().toggleClass('active');
             
-            var actualHeight = angular.element(element.parent())[0].offsetHeight;
-            var contentHeight = angular.element(element.next())[0].offsetHeight + 40;
-            var totalHeight = linkHeight + contentHeight;
-            console.log(totalHeight);
+              var actualHeight = angular.element(element.parent())[0].offsetHeight;
+              var contentHeight = angular.element(element.next())[0].offsetHeight + 40;
+              var totalHeight = linkHeight + contentHeight;
+              console.log(totalHeight);
                 
 
                 if(totalHeight == actualHeight)
                   element.parent().css({ height: linkHeight });
                 else
                   element.parent().css({ height: totalHeight });
+            });
 
+
+            w.bind('resize', function () {
+              var linkHeight = angular.element(element)[0].offsetHeight;
+
+              element.parent().css({ height: linkHeight });
+
+                element.bind('click', function() {
+
+                  console.log(element.parent());
+                  element.parent().toggleClass('active');
+                
+                  var actualHeight = angular.element(element.parent())[0].offsetHeight;
+                  var contentHeight = angular.element(element.next())[0].offsetHeight + 40;
+                  var totalHeight = linkHeight + contentHeight;
+                  console.log(totalHeight);
+                    
+
+                    if(totalHeight == actualHeight)
+                      element.parent().css({ height: linkHeight });
+                    else
+                      element.parent().css({ height: totalHeight });
+                });
 
             });
+
         }
     };
 });
@@ -163,6 +188,7 @@ app.controller('formCtrl', function ($scope, $timeout, $stateParams, $http, $sta
       $http.get('/getMyFormBack/' + $stateParams.id)
       .then(function(response){
         console.log(response);
+        $scope.isToken = true;
         $scope.data.sector = response.data.sector;
         $scope.data.email = response.data.email;
         $scope.data.fname = response.data.fname;
@@ -178,7 +204,8 @@ app.controller('formCtrl', function ($scope, $timeout, $stateParams, $http, $sta
         {
           button.addClass('on');
           var keepData = angular.copy($scope.data);
-          keepData.sector = angular.copy($scope.data.sector.response);
+          if (!$scope.isToken)
+            keepData.sector = angular.copy($scope.data.sector.response);
           $http.post('/postDiagnostic', keepData)
               .success(function(a,b){
                   $state.go('nav.home');

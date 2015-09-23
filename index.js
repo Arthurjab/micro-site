@@ -31,6 +31,7 @@ app.post('/postDiagnostic', function(req,res){
 	var async = false;
 	var ip_pool = "Main Pool";
 	var send_at = "example send_at";
+	console.log(req);
 	var message = {
 		"html": "Hello Jab !<br>Vous avez reçu un nouveau lead.<br><br>\
 		Son identité : " + req.body.fname + " " + req.body.lname + "<br>\

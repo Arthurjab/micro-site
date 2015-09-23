@@ -122,6 +122,8 @@ input.ng-invalid:not(.ng-pristine) {
 	display:block;
 	overflow:hidden;
 	a {
+		display:block;
+		width: 100%;
 		cursor:pointer;
 		h2 {
 			@include fade();
@@ -165,7 +167,7 @@ input.ng-invalid:not(.ng-pristine) {
   @include transition();
 	&:active {
 	  color:white;
-	  top: 5px;
+	  top: 3px;
 	  -webkit-box-shadow: none !important;
 	  -moz-box-shadow: none !important;
 	  -ms-box-shadow: none !important;
