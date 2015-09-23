@@ -6,6 +6,11 @@ var jwt = require('jwt-simple');
 var mandrill = require('./node_modules/mandrill-api/mandrill');
 var mandrill_client = new mandrill.Mandrill('2HmLD1XMdKtb4epIEGPjhA');
 
+
+// leads@jab101.com
+// " + req.body.step1 + "<br>" + req.body.step2 + "<br>" + req.body.step3 + "<br>" + req.body.step4 + "<br>" + req.body.step5 + "<br>" + req.body.step6 + "<br>",
+		"text": "Un nouveau prospect",
+
 app.set('port', (process.env.PORT || 5000));
 
 app.use(bodyParser.json());
@@ -34,9 +39,8 @@ app.post('/postDiagnostic', function(req,res){
 		Son adresse email: " + req.body.email + "<br>\
 		Son secteur d\'activité: " + req.body.sector + "<br>\
 		Son entreprise: " + req.body.company + "\
-		<br><br>Voici son questionnaire finalisé : <br><br>\
-		" + req.body.step1 + "<br>" + req.body.step2 + "<br>" + req.body.step3 + "<br>" + req.body.step4 + "<br>" + req.body.step5 + "<br>" + req.body.step6 + "<br>",
-		"text": "Un nouveau prospect",
+		<br><br>Voici son questionnaire finalisé : <br><br>\",
+		
 		"subject": "Un nouveau prospect pour EDR",
 		"from_email": "hvillain@student.42.fr",
 		"from_name": req.body.lname + ' ' + req.body.fname,
