@@ -188,6 +188,7 @@ app.controller('formCtrl', function ($scope, $timeout, $stateParams, $http, $sta
       $http.get('/getMyFormBack/' + $stateParams.id)
       .then(function(response){
         console.log(response);
+        $scope.isToken = true;
         $scope.data.sector = response.data.sector;
         $scope.data.email = response.data.email;
         $scope.data.fname = response.data.fname;
@@ -203,7 +204,8 @@ app.controller('formCtrl', function ($scope, $timeout, $stateParams, $http, $sta
         {
           button.addClass('on');
           var keepData = angular.copy($scope.data);
-          keepData.sector = angular.copy($scope.data.sector.response);
+          if (!$scope.isToken)
+            keepData.sector = angular.copy($scope.data.sector.response);
           $http.post('/postDiagnostic', keepData)
               .success(function(a,b){
                   $state.go('nav.home');
