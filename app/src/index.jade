@@ -32,6 +32,11 @@ html
 		link(href="http://fonts.googleapis.com/css?family=Open+Sans:400,800,400italic,700italic,300|PT+Serif:400,800italic,700italic|PT+Serif+Caption" rel="stylesheet" type="text/css")
 		link(type="text/css", rel="stylesheet", href="styles/style.css")
 
+		script.
+			(function (e, t) { if (!t.__SV) { window.calq = t; var n = e.createElement("script"); n.type = "text/javascript"; n.src = "http" + ("https:" === e.location.protocol ? "s" : "") + '://api.calq.io/lib/js/core-1.0.js'; n.async = !0; var r = e.getElementsByTagName("script")[0]; r.parentNode.insertBefore(n, r); t.init = function (e, o) { if (t.writeKey) return; t.writeKey = e; t._initOptions = o; t._execQueue = []; m = "action.track action.trackSale action.trackHTMLLink action.trackPageView action.setGlobalProperty user.profile user.identify user.clear".split(" "); for (var n = 0; n < m.length; n++) { var f = function () { var r = m[n]; var s = function () { t._execQueue.push({ m: r, args: arguments }) }; var i = r.split("."); if (i.length == 2) { if (!t[i[0]]) { t[i[0]] = [] } t[i[0]][i[1]] = s } else { t[r] = s } }(); } }; t.__SV = 1 } })(document, window.calq || []);
+			calq.init("9239d0f8280a988b267198469e9e7cea");
+			calq.action.trackPageView();
+
 	body(ng-app="app")
 		div(ui-view="")
 
