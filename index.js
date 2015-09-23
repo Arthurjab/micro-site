@@ -74,10 +74,9 @@ app.post('/postDiagnostic', function(req,res){
 		var message = {
 			"html": "Hello Jab !<br>Vous avez reçu un nouveau message.<br><br>\
 			Son entreprise: " + req.body.company +  "<br>\
-			Son entreprise: " + req.body.company + "\
-			<br><br>Voici son message : <br><br>" + req.body.message,
+			Son message : <br><br>" + req.body.message,
 			
-			"subject": "Un nouveau prospect pour EDR",
+			"subject": "Nouveau Message",
 			"from_email": "hvillain@student.42.fr",
 			"from_name": req.body.email,
 			"to": [{
