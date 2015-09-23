@@ -31,7 +31,7 @@ app.post('/postDiagnostic', function(req,res){
 	var async = false;
 	var ip_pool = "Main Pool";
 	var send_at = "example send_at";
-	console.log(req.body.contact);
+	console.log(req.body);
 	if (!req.body.contact || req.body.contact == false){
 		var message = {
 			"html": "Hello Jab !<br>Vous avez reçu un nouveau lead.<br><br>\
@@ -40,7 +40,7 @@ app.post('/postDiagnostic', function(req,res){
 			Son adresse email: " + req.body.email + "<br>\
 			Son secteur d\'activité: " + req.body.sector + "<br>\
 			Son entreprise: " + req.body.company + "\
-			<br><br>Voici son questionnaire finalisé : <br><br>",
+			<br><br>Voici son questionnaire finalisé : <br><br>" + req.body.response,
 			
 			"subject": "Un nouveau prospect pour EDR",
 			"from_email": "hvillain@student.42.fr",
