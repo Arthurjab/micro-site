@@ -148,7 +148,7 @@
 						| Je ne crois pas à la transition digitale pour mon entreprise/secteur d'activité.
 
 		form.box(name="step7" autocomplete="false" ng-if="step === 7" novalidate).form
-			.six.columns.text-left
+			.six.columns.text-left#text
 				h2 Merci !
 				hr.lines.fly-in
 				p(ng-if="data.step1 == 2") En particulier pour les entreprises entre trois et cinq ans d'existence pour lesquelles la transition digitale est souvent plus difficile à amorcer. Malgré la difficulté, la pérennité d’une entreprise dépend souvent de sa capacité à réformer ses pratiques.
@@ -156,16 +156,16 @@
 				p(ng-if="data.step1 == 1")
 					| Heureusement, les plus jeunes entreprises sont souvent les plus promptes à réévaluer leur activité. Cela constitue un avantage certain à l’heure du digitale, où la croissance d’une entreprise dépend souvent de sa capacité à réformer ses pratiques.
 					| Longtemps réservés aux grosses structures, la recherche et le développement (R&D) jouent aujourd’hui un rôle central dans la stratégie des entreprises qui font parler d’elles.
-				p(ng-if="data.isdigital")
+				p(ng-if="data.step5")
 					| Les entreprises qui comme vous portent un projet de disruption, sont encore rares et bénéficient d’un avantage concurrentiel indéniable.
 					| Si des idées:
 					| Porter un projet de disruption, même s’il est imparfait ou provisoire, constitue la possibilité d’un avantage concurrentiel indéniable, de par la rareté provisoire de ce type de conduite chez les dirigeants.
-				p(ng-if="!data.isdigital")
+				p(ng-if="!data.step5")
 					| Ne pas avoir de projet de disruption pour son entreprise n’est pas irrémédiable. Pourtant, les entreprises qui prennent le pas de la transition digitale bénéficient d’un avantage concurrentiel indéniable, de par la rareté (provisoire) de ce type de conduite chez les dirigeant.
 			.six.columns.text-right.quad-bottom
 				h2 Laissez vos coordonnées
 				hr.lines.fly-in
-				select.big.add-bottom(ng-if="!data.lname", ng-model="data.sector" name="sector" ng-options="item.subItem as item.label for item in values track by item.id", required)
+				select.big.add-bottom(ng-if="!isToken", ng-model="data.sector" name="sector" ng-options="item.subItem as item.label for item in values track by item.id", required)
 					option(value="")
 						| Type d'activité 
 				input.big.add-bottom(placeholder="Votre email professionnel", type="email" ng-model="data.email", autocomplete="false", required)

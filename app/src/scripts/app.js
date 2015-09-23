@@ -127,6 +127,8 @@ app.controller('whoamiCtrl', function ($scope) {
 app.controller('homeCtrl', function ($scope, $http) {
 
         var contactButton = angular.element(document.getElementById('contact-validate'));
+        var isSend = angular.element(document.getElementById('isSend'));
+
 
         $scope.sendContact = function(form){
           console.log(1);
@@ -138,9 +140,11 @@ app.controller('homeCtrl', function ($scope, $http) {
               keepData.contact = true;
               $http.post('/postDiagnostic', keepData)
                   .success(function(a,b){
+                      isSend.removeClass('hidden');
                       contactButton.removeClass('on');
                   })
                   .error(function(a,b){
+                      isSend.removeClass('hidden');
                       contactButton.removeClass('on');
                   });
             }
@@ -219,8 +223,10 @@ app.controller('formCtrl', function ($scope, $timeout, $stateParams, $http, $sta
     $scope.sendForm = function(form){
         if (form.$valid)
         {
+          var text = document.getElementById('text').outerHTML;
           button.addClass('on');
           var keepData = angular.copy($scope.data);
+          keepData.response = text;
           if (!$scope.isToken)
             keepData.sector = angular.copy($scope.data.sector.response);
           $http.post('/postDiagnostic', keepData)
