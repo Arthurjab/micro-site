@@ -2194,7 +2194,7 @@ input.ng-invalid:not(.ng-pristine) {
   transition: all 200ms ease-in-out; }
   .button.cta-2:active {
     color: white;
-    top: 5px;
+    top: 3px;
     -webkit-box-shadow: none !important;
     -moz-box-shadow: none !important;
     -ms-box-shadow: none !important;
