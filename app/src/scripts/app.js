@@ -1,4 +1,9 @@
-var app = angular.module('app', ['ui.router', 'duScroll', 'duParallax']);
+var app = angular.module('app', ['ui.router', 'duScroll', 'duParallax'])
+
+
+//   .run(['optimizely', function(optimizely) {
+//   optimizely.loadProject('880950754');
+// }]);
 
 
 app.directive('toggleChildHeight', function($window) {
