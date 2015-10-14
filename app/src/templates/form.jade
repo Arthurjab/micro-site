@@ -16,45 +16,44 @@
 .center
 	.center-box
 		form.box(name="step1" ng-if="step === 1" novalidate).form
+			h2 Pour quel type d'entreprise travaillez-vous ?
+			.fs-radio-custom
+				span
+					input(id="radio-4-1" type="radio" ng-click="next(step2)" value="1" ng-model="data.step2" name="step2" ng-required="!data.step2")
+					label(for="radio-4-1")
+						| une TPE inférieur à 10 personnes
+				span
+					input(id="radio-4-2" type="radio" ng-click="next(step2)" value="2" ng-model="data.step2" name="step2" ng-required="!data.step2")
+					label(for="radio-4-2")
+						| une PME de 10 à 250 personnes
+				span
+					input(id="radio-4-3" type="radio" ng-click="next(step2)" value="3" ng-model="data.step2" name="step2" ng-required="!data.step2")
+					label(for="radio-4-3")
+						| une ETI de 250 à 5000
+				span
+					input(id="radio-4-3" type="radio" ng-click="next(step2)" value="3" ng-model="data.step2" name="step2" ng-required="!data.step2")
+					label(for="radio-4-3")
+						| une GG supérieur à 5000
+		form.box(name="step2" ng-if="step === 2" novalidate).form
 			h2 En êtes vous le dirigeant ?
 			.fs-radio-custom
 				span
 					input(id="radio-3-1" type="radio" ng-click="next(step1)" value="true" ng-model="data.step1" name="step1" ng-required="!data.step1")
 					label(for="radio-3-1")
-						| Oui.
+						| Oui
 				span
 					input(id="radio-3-2" type="radio" ng-click="next(step1)" value="false" ng-model="data.step1" name="step1" ng-required="!data.step1")
 					label(for="radio-3-2")
-						| Non.
-
-		form.box(name="step2" ng-if="step === 2" novalidate).form
-			h2 Quel type d'entreprise dirigez vous ?
-			.fs-radio-custom
-				span
-					input(id="radio-4-1" type="radio" ng-click="next(step2)" value="1" ng-model="data.step2" name="step2" ng-required="!data.step2")
-					label(for="radio-4-1")
-						| TPE inférieur à 10 personnes
-				span
-					input(id="radio-4-2" type="radio" ng-click="next(step2)" value="2" ng-model="data.step2" name="step2" ng-required="!data.step2")
-					label(for="radio-4-2")
-						| PME de 10 à 250 personnes
-				span
-					input(id="radio-4-3" type="radio" ng-click="next(step2)" value="3" ng-model="data.step2" name="step2" ng-required="!data.step2")
-					label(for="radio-4-3")
-						| ETI de 250 à 5000
-				span
-					input(id="radio-4-3" type="radio" ng-click="next(step2)" value="3" ng-model="data.step2" name="step2" ng-required="!data.step2")
-					label(for="radio-4-3")
-						| GG supérieur à 5000			
+						| Non			
 
 		form.box(name="step3" ng-if="step === 3" novalidate).form
 			h2 On peut aujourd'hui choisir de piloter sa PME presque comme une usine automatique. Comment estimez-vous votre connaissance du digital ?
 			select.add-bottom(ng-change="next(step3)" ng-model="data.step3" name="step3" ng-options="item.subItem as item.label for item in digitalValues track by item.id", required)
 				option(value="")
-					| Type d'activité 
+					| Notez votre connaissance de 1 à 5 
 
 		form.box(name="step4" ng-if="step === 4" novalidate).form
-			h2  Portez-vous un projet de transfor digitale (dont data ...) pour votre entreprise?
+			h2  Portez-vous un projet de transformation digitale pour votre entreprise?
 			.fs-radio-custom
 				span
 					input(id="radio-6-1-1" type="radio" ng-click="next(step4)" value="1" ng-model="data.step4" name="step4" ng-required="!data.step4")
@@ -63,7 +62,7 @@
 				span
 					input(id="radio-6-1-2" type="radio" ng-click="next(step4)" value="2" ng-model="data.step4" name="step4" ng-required="!data.step4")
 					label(for="radio-6-1-2")
-						| Oui, mais juste quelques idées...
+						| Oui, mais ce sont juste des idées
 				span
 					input(id="radio-6-1-3" type="radio" ng-click="next(step4)" value="3" ng-model="data.step4" name="step4" ng-required="!data.step4")
 					label(for="radio-6-1-3")
@@ -75,50 +74,48 @@
 				span
 					input(id="radio-6-2-1" type="radio" ng-click="next(step5)" value="1" ng-model="data.step5" name="step5" ng-required="!data.step5")
 					label(for="radio-6-2-1")
-						| Oui, plutôt en termes de compétitivité / réduction de coût / optimisation opérationnelle.
+						| Oui, plutôt en termes de compétitivité / réduction de coût / optimisation opérationnelle
 				span
 					input(id="radio-6-2-2" type="radio" ng-click="next(step5)" value="2" ng-model="data.step5" name="step5" ng-required="!data.step5")
 					label(for="radio-6-2-2")
-						| Oui, plutôt en termes d'évolution de la relation client, de l'expérience utilisateur.
+						| Oui, plutôt en termes d'évolution de la relation client, de l'expérience utilisateur
 				span
 					input(id="radio-6-2-3" type="radio" ng-click="next(step5)" value="3" ng-model="data.step5" name="step5" ng-required="!data.step5")
 					label(for="radio-6-2-3")
-						| Oui, sur les deux plans.
+						| Oui, sur les deux plans
 				span
 					input(id="radio-6-2-4" type="radio" ng-click="next(step5)" value="4" ng-model="data.step5" name="step5" ng-required="!data.step5")
 					label(for="radio-6-2-4")
-						| Ne sait pas encore, c'est exploratoire.
+						| Je ne sais pas encore, c'est exploratoire
 		
 		form.box(name="step5" ng-if="step === 5 && data.step4 == 3" novalidate).form
-			h2  Diriez-vous que la transition digitale vous inquiète?
+			h2  Quel est le frein principal à la transition digitale dans votre entreprise ?
 			.fs-radio-custom
 				span
 					input(id="radio-7-2-1" type="radio" ng-click="next(step5)" value="1" ng-model="data.step5" name="step5" ng-required="!data.step5")
 					label(for="radio-7-2-1")
-						| Un manque de compétences en interne.
+						| Un manque de compétences en interne
 				span
 					input(id="radio-7-2-2" type="radio" ng-click="next(step5)" value="2" ng-model="data.step5" name="step5" ng-required="!data.step5")
 					label(for="radio-7-2-2")
-						| Un manque d'accompagnement.
+						| Un manque d'accompagnement
 				span
 					input(id="radio-7-2-3" type="radio" ng-click="next(step5)" value="3" ng-model="data.step5" name="step5" ng-required="!data.step5")
 					label(for="radio-7-2-3")
-						| Je ne sais pas quel avantage mon entreprise pourrait en retirer.
+						| Je ne sais pas quel avantage mon entreprise pourrait en retirer
 				span
 					input(id="radio-7-2-4" type="radio" ng-click="next(step5)" value="4" ng-model="data.step5" name="step5" ng-required="!data.step5")
 					label(for="radio-7-2-4")
-						| Je ne crois pas à la transition digitale pour mon entreprise/secteur d'activité.
+						| Je ne crois pas à la transition digitale pour mon entreprise/secteur d'activité
 
 		form.box(name="step6" autocomplete="false" ng-if="step === 6" novalidate).form
 			.six.columns.text-left#text
 				h2 Merci !
 				hr.lines.fly-in
 				p.
-					Les entreprises qui comme vous portent un projet de disruption, sont encore rares et bénéficient d’un avantage concurrentiel indéniable.
-					Si des idées:
-					Porter un projet de disruption, même s’il est imparfait ou provisoire, constitue la possibilité d’un avantage concurrentiel indéniable, de par la rareté provisoire de ce type de conduite chez les dirigeants.
+					Les entreprises qui portent un projet de disruption sont encore rares et bénéficient d’un avantage concurrentiel indéniable. Depuis 2012, j'accompagne des entreprises telles que la vôtre dans leurs projets de transformation digitale. Ensemble, nous pourrons révolutionner l'expérience de vos clients et optimiser la productivité de votre entreprise.
 			.six.columns.text-right.quad-bottom
-				h2 Laissez vos coordonnées
+				h2 Bénéficiez d'un entretien personnalisé
 				hr.lines.fly-in
 				select.big.add-bottom(ng-if="!isToken", ng-model="data.sector" name="sector" ng-options="item.subItem as item.label for item in values track by item.id", required)
 					option(value="")
