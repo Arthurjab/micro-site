@@ -11,6 +11,10 @@
 @import "core/install";
 @import "core/animations";
 
+body {
+	overflow-x: hidden;
+}
+
 #nav {
 	border-bottom: 2px solid black;
 }

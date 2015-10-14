@@ -162,43 +162,104 @@ app.controller('formCtrl', function ($scope, $timeout, $stateParams, $http, $sta
 
 
     // le subitem est là pour aménager un peu la réponse 
-    $scope.values = [{
+        $scope.values = [
+        {
+          id: 1,
+          label: 'Automobile',
+          subItem: { name: 'Automobile' }
+        },{
+          id: 1,
+          label: 'Agriculture',
+          subItem: { name: 'Agriculture' }
+        }, {
+          id: 2,
+          label: 'Agroalimentaire',
+          subItem: { name: 'Agroalimentaire' }
+        }, {
+          id: 3,
+          label: 'Assurance',
+          subItem: { name: 'Assurance' }
+        }, {
+          id: 4,
+          label: 'BTP',
+          subItem: { name: 'BTP' }
+        }, {
+          id: 5,
+          label: 'Conseils et services aux entreprises',
+          subItem: { name: 'Conseil' }
+        }, {
+          id: 6,
+          label: 'Distribution, e-commerce, franchises',
+          subItem: { name: 'Distribution' }
+        }, {
+          id: 7,
+          label: 'Finance',
+          subItem: { name: 'Finance' }
+        }, {
+          id: 8,
+          label: 'Education, formation, recherche',
+          subItem: { name: 'Education' }
+        }, {
+          id: 9,
+          label: 'Energie, extraction',
+          subItem: { name: 'Energie' }
+        }, {
+          id: 10,
+          label: 'Industrie chimique, pharma',
+          subItem: { name: 'Indus-chimique' }
+        }, {
+          id: 11,
+          label: 'Industrie mécanique',
+          subItem: { name: 'Indus-mécanique' }
+        }, {
+          id: 12,
+          label: 'Luxe, cosmétiques',
+          subItem: { name: 'Luxe' }
+        }, {
+          id: 13,
+          label: 'Media, entertainment',
+          subItem: { name: 'Medias' }
+        }, {
+          id: 14,
+          label: 'Santé, sanitaire et social',
+          subItem: { name: 'Secteur-publique' }
+        }, {
+          id: 15,
+          label: 'Sécurité, défense',
+          subItem: { name: 'Sécurité' }
+        }, {
+          id: 16,
+          label: 'Services aux collectivités',
+          subItem: { name: 'Services' }
+        }, {
+          id: 17,
+          label: 'Technologies',
+          subItem: { name: 'Technologies' }
+        }];
+
+    $scope.digitalValues = [
+    {
       id: 1,
-      label: 'Agriculture',
-      subItem: { name: "L'agriculture", response: "agriculture" }
+      label: '1',
+      subItem: { name: '1' }
+    },{
+      id: 1,
+      label: '2',
+      subItem: { name: '2' }
     }, {
       id: 2,
-      label: 'Services',
-      subItem: { name: 'Le service', response: "service" }
+      label: '3',
+      subItem: { name: '3' }
     }, {
       id: 3,
-      label: 'Industrie',
-      subItem: { name: "L'Industrie", response: "industrie" }
+      label: '4',
+      subItem: { name: '4' }
     }, {
       id: 4,
-      label: 'Bâtiment',
-      subItem: { name: 'Le bâtiment', response: "bâtiment" }
-    }, {
-      id: 5,
-      label: 'Média / Edition',
-      subItem: { name: "Les Média et l'edition", response: "edition" }
-    }, {
-      id: 6,
-      label: 'Transport',
-      subItem: { name: 'Le transport', response: "transport" }
-    }, {
-      id: 7,
-      label: 'Télécom',
-      subItem: { name: 'Les télécoms', response: "télécom" }
-    }, {
-      id: 8,
-      label: 'Ecologie',
-      subItem: { name: "L'ecologie", response: "ecologie" }
-    }, {
-      id: 9,
-      label: 'E-commerce',
-      subItem: { name: "L'e-commerce", response: "e-commerce" }
+      label: '5',
+      subItem: { name: '5' }
     }];
+
 
     $scope.data = {
         sector:"",
@@ -250,7 +311,7 @@ app.controller('formCtrl', function ($scope, $timeout, $stateParams, $http, $sta
 
   $scope.step = 1;
   $scope.maxStep = 1;
-  $scope.totalStep = 7;
+  $scope.totalStep = 6;
 
   var progressBar = angular.element(document.querySelector('.progress-bar'));
   var nav = angular.element(document.querySelector('.navigation-handler'));
