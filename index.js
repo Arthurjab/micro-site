@@ -27,6 +27,26 @@ app.get('/getMyFormBack/:token', function(req,res){
 	return res.send(200, decoded);
 });
 
+app.get('/subscribeToMailchimp/:token', function(req,res){
+	var id = '17ad17823a';
+	var token = req.params.token;
+	var secret = 'ThisIsTheSecretIDontWantUTOKNOW';
+	var decoded = jwt.decode(token, secret);
+	decoded.from = "ederocquigny.com";
+
+	mc.lists.subscribe({id: id, email:{email:decoded.email}, merge_vars: {FNAME:decoded.fname,LNAME:decoded.lname,COMPANY:decoded.company,SECTOR:decoded.sector,FROM:decoded.from}}, function(data) {
+  		var ret = 'User subscribed successfully! Look for the confirmation email.';
+  		var payload = req.body;
+		var secret = 'ThisIsTheSecretIDontWantUTOKNOW';
+ 		var token = jwt.encode(payload, secret);
+	  	return res.send(200);
+		},
+		function(error) {
+			console.log(error);
+		  	return res.send(404, error.code);
+	});
+}
+
 app.post('/postDiagnostic', function(req,res){
 	var async = false;
 	var ip_pool = "Main Pool";
