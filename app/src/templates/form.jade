@@ -19,30 +19,30 @@
 			h2 Pour quel type d'entreprise travaillez-vous ?
 			.fs-radio-custom
 				span
-					input(id="radio-4-1" type="radio" ng-click="next(step2)" value="1" ng-model="data.step2" name="step2" ng-required="!data.step2")
+					input(id="radio-4-1" type="radio" ng-click="next(step1)" value="1" ng-model="data.step1" name="step1" ng-required="!data.step1")
 					label(for="radio-4-1")
 						| une TPE inférieur à 10 personnes
 				span
-					input(id="radio-4-2" type="radio" ng-click="next(step2)" value="2" ng-model="data.step2" name="step2" ng-required="!data.step2")
+					input(id="radio-4-2" type="radio" ng-click="next(step1)" value="2" ng-model="data.step1" name="step1" ng-required="!data.step1")
 					label(for="radio-4-2")
 						| une PME de 10 à 250 personnes
 				span
-					input(id="radio-4-3" type="radio" ng-click="next(step2)" value="3" ng-model="data.step2" name="step2" ng-required="!data.step2")
+					input(id="radio-4-3" type="radio" ng-click="next(step1)" value="3" ng-model="data.step1" name="step1" ng-required="!data.step1")
 					label(for="radio-4-3")
 						| une ETI de 250 à 5000
 				span
-					input(id="radio-4-3" type="radio" ng-click="next(step2)" value="3" ng-model="data.step2" name="step2" ng-required="!data.step2")
+					input(id="radio-4-3" type="radio" ng-click="next(step1)" value="3" ng-model="data.step1" name="step1" ng-required="!data.step1")
 					label(for="radio-4-3")
 						| une GG supérieur à 5000
 		form.box(name="step2" ng-if="step === 2" novalidate).form
 			h2 En êtes vous le dirigeant ?
 			.fs-radio-custom
 				span
-					input(id="radio-3-1" type="radio" ng-click="next(step1)" value="true" ng-model="data.step1" name="step1" ng-required="!data.step1")
+					input(id="radio-3-1" type="radio" ng-click="next(step2)" value="true" ng-model="data.step2" name="step2" ng-required="!data.step2")
 					label(for="radio-3-1")
 						| Oui
 				span
-					input(id="radio-3-2" type="radio" ng-click="next(step1)" value="false" ng-model="data.step1" name="step1" ng-required="!data.step1")
+					input(id="radio-3-2" type="radio" ng-click="next(step2)" value="false" ng-model="data.step2" name="step2" ng-required="!data.step2")
 					label(for="radio-3-2")
 						| Non			
 
