@@ -5,6 +5,8 @@ var http = require('http');
 var jwt = require('jwt-simple');
 var mandrill = require('./node_modules/mandrill-api/mandrill');
 var mandrill_client = new mandrill.Mandrill('2HmLD1XMdKtb4epIEGPjhA');
+var mcapi = require('./node_modules/mailchimp-api/mailchimp');
+var mc = new mcapi.Mailchimp('4065696cd2535d9bce60926a5d0d7703-us11');
 
 
 // leads@jab101.com
@@ -126,7 +128,10 @@ app.post('/postDiagnostic', function(req,res){
 	}
 
 	mandrill_client.messages.send({"message": message, "async": async, "ip_pool": ip_pool, "send_at": ''}, function(result) {
-	    res.send(200);
+		var payload = req.body;
+		var secret = 'ThisIsTheSecretIDontWantUTOKNOW';
+ 		var token = jwt.encode(payload, secret);
+	    res.send(200, {token:token});
 	}, function(e) {
 	    console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
 	    res.send(404, e);
