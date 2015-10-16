@@ -1,12 +1,28 @@
-section.texture
-	.container.fly-in
+section.screen-box.texture(ng-if="!isFinished")
+	#center.container.fly-in
 		.clearfix
 		.big-circle.circle-fusee.text-center.octo-top.double-bottom
 		h1.text-dark.text-center REJOIGNEZ LES ENTREPRISES QUI ONT PRIS DE L'AVANCE
 		h5.text-grey-50.i.text-center Révolutionnez l'expérience de vos clients et optimisez la productivité de votre entreprise.
 		.button-box.octo-bottom
 			button.button.cta-1.light.centered(ui-sref="form") Passez le test !
-
+section.screen-box.texture(ng-if="isFinished && !isFromObs")
+	.container.fly-in
+		.clearfix.octo-top
+		h1.text-dark.octo-top.text-center Vous en voulez plus ? Guettez notre prochaine étude de cas !
+		h5.text-grey-50.i.text-center  Nous avons compilé les secrets de ceux qui dévorent vos parts de marché…
+section.screen-box.texture(ng-if="isFinished && isFromObs")
+	.container.fly-in
+		.clearfix.octo-top
+		h1.text-dark.octo-top.text-center.
+			Merci ! Envie de remonter <br>vos marges maintenant ?
+		h5.text-grey-50.i.text-center  Recevez les secrets de ceux qui se sont lancés (et ont réussi) dans votre boîte mail
+		.clearfix
+		.button-box.octo-bottom
+			button.button.cta-1.light.centered(id="contact-validate", ng-click="sendEmail()") S'inscrire à la newsletter
+		#isSend.hidden.double-top
+			p.
+				Merci !
 //- section.container
 	.clearfix.octo-bottom
 	.three.columns.large-visible

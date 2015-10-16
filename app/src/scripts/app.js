@@ -95,7 +95,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
             controller: 'homeCtrl'
         })
         .state('nav.home', {
-            url: '/',
+            url: '/:context',
+            params:{context:null},
             templateUrl: 'templates/home.html',
             controller: 'homeCtrl'
         })
@@ -129,30 +130,27 @@ app.controller('whoamiCtrl', function ($scope) {
 
 });
 
-app.controller('homeCtrl', function ($scope, $http) {
+app.controller('homeCtrl', function ($scope, $http, $stateParams) {
+
+        if($stateParams.context && $stateParams.context != 0)
+          $scope.isFinished = true;
+        if($stateParams.context && $stateParams.context == 0)
+        {
+          $scope.isFinished = true;
+          $scope.isFromObs = true;
+        }
 
         var contactButton = angular.element(document.getElementById('contact-validate'));
         var isSend = angular.element(document.getElementById('isSend'));
 
 
-        $scope.sendContact = function(form){
-          console.log(1);
-            if (form.$valid)
-            {
-              console.log(2);
-              contactButton.addClass('on');
-              var keepData = angular.copy($scope.data);
-              keepData.contact = true;
-              $http.post('/postDiagnostic', keepData)
-                  .success(function(a,b){
-                      isSend.removeClass('hidden');
-                      contactButton.removeClass('on');
-                  })
-                  .error(function(a,b){
-                      isSend.removeClass('hidden');
-                      contactButton.removeClass('on');
-                  });
-            }
+        $scope.sendEmail = function(){
+          console.log($stateParams.context);
+          $http.get('/subscribeToMailchimp/' + $stateParams.context)
+          .then(function(){
+             isSend.removeClass('hidden');
+             contactButton.addClass('hidden');
+          });
         };
 
     });
@@ -240,23 +238,23 @@ app.controller('formCtrl', function ($scope, $timeout, $stateParams, $http, $sta
     $scope.digitalValues = [
     {
       id: 1,
-      label: '1',
+      label: '1, très mauvais',
       subItem: { name: '1' }
     },{
       id: 1,
-      label: '2',
+      label: '2, mauvais',
       subItem: { name: '2' }
     }, {
       id: 2,
-      label: '3',
+      label: '3, passable',
       subItem: { name: '3' }
     }, {
       id: 3,
-      label: '4',
+      label: '4, bon',
       subItem: { name: '4' }
     }, {
       id: 4,
-      label: '5',
+      label: '5, excellent',
       subItem: { name: '5' }
     }];
 
@@ -269,6 +267,7 @@ app.controller('formCtrl', function ($scope, $timeout, $stateParams, $http, $sta
         phone:"",
         company:""
     };
+
 
     if ($stateParams.id)
     {
@@ -297,7 +296,10 @@ app.controller('formCtrl', function ($scope, $timeout, $stateParams, $http, $sta
             keepData.sector = angular.copy($scope.data.sector.response);
           $http.post('/postDiagnostic', keepData)
               .success(function(a,b){
-                  $state.go('nav.home');
+                  if ($scope.isToken)
+                    $state.go('nav.home', { context: $stateParams.id });
+                  else
+                    $state.go('nav.home', { context: 0 });
                   calq.action.track('Opt-in', {"data": keepData});
                   console.log(a,b);
               })

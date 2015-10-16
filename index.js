@@ -45,7 +45,7 @@ app.get('/subscribeToMailchimp/:token', function(req,res){
 			console.log(error);
 		  	return res.send(404, error.code);
 	});
-}
+});
 
 app.post('/postDiagnostic', function(req,res){
 	var async = false;
