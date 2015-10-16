@@ -117,8 +117,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
         })
 
 });
-     
-
 
 app.controller('faqCtrl', function ($scope) {
 
@@ -130,7 +128,7 @@ app.controller('whoamiCtrl', function ($scope) {
 
 });
 
-app.controller('homeCtrl', function ($scope, $http, $stateParams) {
+app.controller('homeCtrl', function ($scope, $http, $stateParams, $timeout) {
 
         if($stateParams.context && $stateParams.context != 0)
           $scope.isFinished = true;
@@ -140,18 +138,20 @@ app.controller('homeCtrl', function ($scope, $http, $stateParams) {
           $scope.isFromObs = true;
         }
 
-        var contactButton = angular.element(document.getElementById('contact-validate'));
-        var isSend = angular.element(document.getElementById('isSend'));
+        $timeout(function(){
+          var contactButton = angular.element(document.getElementById('contact-validate'));
+          var isSended = angular.element(document.getElementById('is-sended'));
+          $scope.sendEmail = function(){
+            $http.get('/subscribeToMailchimp/' + $stateParams.context)
+            .success(function(){
+               console.log(isSended);
+               isSended.removeClass('hidden');
+               contactButton.addClass('hidden');
+            });
+          };
+        });
 
 
-        $scope.sendEmail = function(){
-          console.log($stateParams.context);
-          $http.get('/subscribeToMailchimp/' + $stateParams.context)
-          .then(function(){
-             isSend.removeClass('hidden');
-             contactButton.addClass('hidden');
-          });
-        };
 
     });
 
@@ -242,15 +242,15 @@ app.controller('formCtrl', function ($scope, $timeout, $stateParams, $http, $sta
       subItem: { name: '1' }
     },{
       id: 1,
-      label: '2, mauvais',
+      label: '2',
       subItem: { name: '2' }
     }, {
       id: 2,
-      label: '3, passable',
+      label: '3',
       subItem: { name: '3' }
     }, {
       id: 3,
-      label: '4, bon',
+      label: '4',
       subItem: { name: '4' }
     }, {
       id: 4,
@@ -297,9 +297,12 @@ app.controller('formCtrl', function ($scope, $timeout, $stateParams, $http, $sta
           $http.post('/postDiagnostic', keepData)
               .success(function(a,b){
                   if ($scope.isToken)
-                    $state.go('nav.home', { context: $stateParams.id });
-                  else
                     $state.go('nav.home', { context: 0 });
+                  else
+                  {
+                    console.log(a, b);
+                    $state.go('nav.home', { context: a.token });
+                  }
                   calq.action.track('Opt-in', {"data": keepData});
                   console.log(a,b);
               })

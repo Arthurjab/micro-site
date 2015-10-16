@@ -113,19 +113,20 @@
 				h2 Merci !
 				hr.lines.fly-in
 				p.
-					Les entreprises qui portent un projet de disruption sont encore rares et bénéficient d’un avantage concurrentiel indéniable. Depuis 2012, j'accompagne des entreprises telles que la vôtre dans leurs projets de transformation digitale. Ensemble, nous pourrons révolutionner l'expérience de vos clients et optimiser la productivité de votre entreprise.
+					Les entreprises qui portent un projet de disruption sont encore rares et bénéficient d’un avantage concurrentiel indéniable. Depuis 2012, nous accompagnons des entreprises telles que la vôtre dans leurs projets de transformation digitale et data-algorithmique. Ensemble, nous pourrons révolutionner l'expérience de vos clients et optimiser la productivité de votre entreprise.
 			.six.columns.text-right.quad-bottom
-				h2 Bénéficiez d'un entretien personnalisé
+				h2 Bénéficiez<br>d'un entretien personnalisé
 				hr.lines.fly-in
 				select.big.add-bottom(ng-if="!isToken", ng-model="data.sector" name="sector" ng-options="item.subItem as item.label for item in values track by item.id", required)
 					option(value="")
 						| Type d'activité 
 				input.big.add-bottom(placeholder="Votre email professionnel", type="email" ng-model="data.email", autocomplete="false", required)
+				p.add-left.float-left.add-bottom.text-grey-20.
+					Ne sera <b>jamais</b> divulgué.
 				input.big.add-bottom(placeholder="Nom de votre entreprise", type="text", ng-model="data.company", autocomplete="false", required)
-				input.big.add-bottom(placeholder="Nom", type="text", ng-model="data.fname", autocomplete="false", required)
-				input.big.add-bottom(placeholder="Prenom", type="text", ng-model="data.lname", autocomplete="false", required)
+				input.big.add-bottom(placeholder="Votre nom", type="text", ng-model="data.fname", autocomplete="false", required)
+				input.big.add-bottom(placeholder="Votre prénom", type="text", ng-model="data.lname", autocomplete="false", required)
 				input.big.add-bottom(placeholder="Téléphone (ex : 0659578609)", type="text", phoneformat, ng-model="data.phone", autocomplete="false", required)
-				button#validate.add-top.cta-2.button.dark.spinner(type="submit", ng-click="sendForm(step6)")
+				button#validate.float-right.add-top.cta-2.button.dark.spinner(type="submit", ng-click="sendForm(step6)")
 					span Valider
 					.spin
-
