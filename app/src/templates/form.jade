@@ -121,12 +121,12 @@
 					option(value="")
 						| Type d'activité 
 				input.big.add-bottom(placeholder="Votre email professionnel", type="email" ng-model="data.email", autocomplete="false", required)
-				p.add-left.float-left.add-bottom.text-grey-20.
-					Ne sera <b>jamais</b> divulgué.
 				input.big.add-bottom(placeholder="Nom de votre entreprise", type="text", ng-model="data.company", autocomplete="false", required)
 				input.big.add-bottom(placeholder="Votre nom", type="text", ng-model="data.fname", autocomplete="false", required)
 				input.big.add-bottom(placeholder="Votre prénom", type="text", ng-model="data.lname", autocomplete="false", required)
 				input.big.add-bottom(placeholder="Téléphone (ex : 0659578609)", type="text", phoneformat, ng-model="data.phone", autocomplete="false", required)
+				p.add-left.float-left.add-top.text-grey-30.
+					Ne sera <b>jamais</b> divulgué.
 				button#validate.float-right.add-top.cta-2.button.dark.spinner(type="submit", ng-click="sendForm(step6)")
 					span Valider
 					.spin

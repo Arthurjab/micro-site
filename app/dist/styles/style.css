@@ -588,6 +588,12 @@ th {
 .text-grey-20 {
   color: #d9d9d9 !important; }
 
+.text-grey-30 {
+  color: #bfbfbf !important; }
+
+.text-grey-40 {
+  color: #a6a6a6 !important; }
+
 .text-grey-50 {
   color: #8c8c8c !important; }
 
@@ -2029,6 +2035,9 @@ input[type="radio"]:checked + label::after {
   -moz-animation: box-flyin 0.9s 1;
   -o-animation: box-flyin 0.9s 1;
   animation: box-flyin 0.9s 1; }
+
+body {
+  overflow-x: hidden; }
 
 #nav {
   border-bottom: 2px solid black; }
