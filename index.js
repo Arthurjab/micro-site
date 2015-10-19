@@ -56,19 +56,22 @@ app.post('/postDiagnostic', function(req,res){
 	console.log(req.body);
 	if (!req.body.contact || req.body.contact == false){
 		var message = {
-			"html": "Hello !<br>Vous avez reçu un nouveau lead.<br><br>\
+			"html": "Vous avez reçu un nouveau lead.<br><br>\
 			Son identité : " + req.body.fname + " " + req.body.lname + "<br>\
 			Son numéro de téléphone: " + req.body.phone + "<br>\
 			Son adresse email: " + req.body.email + "<br>\
-			Son secteur d\'activité: " + req.body.sector + "<br>\
 			Son entreprise: " + req.body.company + "\
-			<br><br>Voici son questionnaire finalisé : <br><br>" + req.body.response,
-			
+			<br><br>Voici son questionnaire finalisé : <br><br>\
+			Question 1: " + req.body.step1 + "<br>\
+			Question 2: " + req.body.step2 + "<br>\
+			Question 3: " + req.body.step3.name + "<br>\
+			Question 4: " + req.body.step4 + "<br>\
+			Question 5: " + req.body.step5 + "<br><br><br>" + req.body.response,
 			"subject": "Un nouveau prospect pour EDR",
-			"from_email": "hugo.p.villain@gmail.com",
+			"from_email": req.body.email,
 			"from_name": req.body.lname + ' ' + req.body.fname,
 			"to": [{
-			        "email": "hugo.p.villain@gmail.com",
+			        "email": "contact@aremus-associes.com",
 			        "name": "pour pme-bigdata",
 			        "type": "to"
 			    }],
