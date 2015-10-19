@@ -56,7 +56,7 @@ app.post('/postDiagnostic', function(req,res){
 	console.log(req.body);
 	if (!req.body.contact || req.body.contact == false){
 		var message = {
-			"html": "Hello Jab !<br>Vous avez reçu un nouveau lead.<br><br>\
+			"html": "Hello !<br>Vous avez reçu un nouveau lead.<br><br>\
 			Son identité : " + req.body.fname + " " + req.body.lname + "<br>\
 			Son numéro de téléphone: " + req.body.phone + "<br>\
 			Son adresse email: " + req.body.email + "<br>\
@@ -65,11 +65,11 @@ app.post('/postDiagnostic', function(req,res){
 			<br><br>Voici son questionnaire finalisé : <br><br>" + req.body.response,
 			
 			"subject": "Un nouveau prospect pour EDR",
-			"from_email": "hvillain@student.42.fr",
+			"from_email": "hugo.p.villain@gmail.com",
 			"from_name": req.body.lname + ' ' + req.body.fname,
 			"to": [{
-			        "email": "hvillain@student.42.fr",
-			        "name": "pour Jab",
+			        "email": "hugo.p.villain@gmail.com",
+			        "name": "pour pme-bigdata",
 			        "type": "to"
 			    }],
 			"headers": {
