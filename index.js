@@ -3,15 +3,12 @@ var bodyParser = require('body-parser');
 var app = express();
 var http = require('http');
 var jwt = require('jwt-simple');
+var fs = require('fs');
 var mandrill = require('./node_modules/mandrill-api/mandrill');
 var mandrill_client = new mandrill.Mandrill('2HmLD1XMdKtb4epIEGPjhA');
 var mcapi = require('./node_modules/mailchimp-api/mailchimp');
 var mc = new mcapi.Mailchimp('4065696cd2535d9bce60926a5d0d7703-us11');
-
-
-// leads@jab101.com
-// " + req.body.step1 + "<br>" + req.body.step2 + "<br>" + req.body.step3 + "<br>" + req.body.step4 + "<br>" + req.body.step5 + "<br>" + req.body.step6 + "<br>",
-//		"text": "Un nouveau prospect",
+var csvFile =  fs.readFileSync('./public/listing.csv', 'utf8');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -53,23 +50,34 @@ app.post('/postDiagnostic', function(req,res){
 	var async = false;
 	var ip_pool = "Main Pool";
 	var send_at = "example send_at";
-	console.log(req.body);
+
+	//prenom,nom,email,telephone,entreprise,q1,q2,q3,q4,q5,q6,q7
+	var appendCsv = req.body.lname + ',' + req.body.fname + ',' + req.body.email + ',' + req.body.phone + ',' + req.body.company + ',' + req.body.step1 + ',' + req.body.step2 + ',' + req.body.step3.name + ',' + req.body.step4 + ',' + req.body.step5 + '\n';
+	fs.appendFile('./public/listing.csv', appendCsv, function (err) {
+	  if (err){
+	  	console.log(err);
+	  	var errorFromAppend = "une erreur est survenue, contacter Jab";
+	  } 
+	});
 	if (!req.body.contact || req.body.contact == false){
 		var message = {
-			"html": "Hello Jab !<br>Vous avez reçu un nouveau lead.<br><br>\
+			"html": "Vous avez reçu un nouveau lead.<br><br>\
 			Son identité : " + req.body.fname + " " + req.body.lname + "<br>\
 			Son numéro de téléphone: " + req.body.phone + "<br>\
 			Son adresse email: " + req.body.email + "<br>\
-			Son secteur d\'activité: " + req.body.sector + "<br>\
 			Son entreprise: " + req.body.company + "\
-			<br><br>Voici son questionnaire finalisé : <br><br>" + req.body.response,
-			
+			<br><br>Voici son questionnaire finalisé : <br><br>\
+			Question 1: " + req.body.step1 + "<br>\
+			Question 2: " + req.body.step2 + "<br>\
+			Question 3: " + req.body.step3.name + "<br>\
+			Question 4: " + req.body.step4 + "<br>\
+			Question 5: " + req.body.step5 + "<br><br><br>" + req.body.response,
 			"subject": "Un nouveau prospect pour EDR",
-			"from_email": "hvillain@student.42.fr",
+			"from_email": req.body.email,
 			"from_name": req.body.lname + ' ' + req.body.fname,
 			"to": [{
-			        "email": "hvillain@student.42.fr",
-			        "name": "pour Jab",
+			        "email": "contact@aremus-associes.com",
+			        "name": "pour pme-bigdata",
 			        "type": "to"
 			    }],
 			"headers": {
@@ -138,9 +146,15 @@ app.post('/postDiagnostic', function(req,res){
 	});
 });
 
+app.get('/interactions/listing-aremus-questionnaire-x22b', function(request, response) {
+  response.download(__dirname + '/public/listing.csv');
+});
+
+
 app.get('/*', function(request, response) {
   response.sendFile(__dirname + '/app/dist/index.html');
 });
+
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
